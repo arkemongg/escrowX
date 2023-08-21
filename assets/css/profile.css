@@ -1,0 +1,965 @@
+.customer-section{
+    width: 95%;
+    min-height: 500px;
+    margin: auto;
+    margin-top: 10px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    position: relative;
+}
+
+.customer-avatar-area{
+    overflow: hidden;
+    margin: auto;
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+.customer-avatar-area img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.customer-data{
+    margin: 0px;
+    padding: 20px;
+    list-style-type: none;
+}
+.customer-data li{
+    display: flex;
+    border-radius: 5px;
+    overflow: hidden;
+    outline:0.5px solid rgba(0, 0, 0, 0.226);
+    margin-bottom: 15px;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+/* .customer-data li:first-child{
+    background: #202124;
+    padding: 10px;
+    text-align: center;
+    color: white;
+} */
+
+
+
+#edit-profile{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+#verify-profile{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    min-width: 110px;
+}
+
+.customer-data li div:first-child {
+    background: #1D1678;
+    text-align: center;
+    color: white;
+    width: 40%;
+    padding: 15px;
+}
+
+/* Select the last child div inside the li */
+.customer-data li div:last-child {
+    text-align: center;
+    width: 60%;
+    background: hsla(0, 0%, 0%, 0.088);
+    padding: 15px;
+}
+
+/* Verification Area */
+
+
+/* Verification Area */
+.verify-customer-area{
+    width: 95%;
+    min-height: 400px;
+    background: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    padding-bottom: 20px;
+}
+
+.remove-verify-area{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    right: 0;
+}
+
+.verify-customer-data{
+    margin: 0px;
+    padding: 20px;
+    list-style-type: none;
+}
+.verify-customer-data li{
+    display: flex;
+    border-radius: 5px;
+    overflow: hidden;
+    outline:0.5px solid rgba(0, 0, 0, 0.226);
+    margin-bottom: 15px;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+.verify-customer-data li div:first-child {
+    background: #1D1678;
+    text-align: center;
+    color: white;
+    width: 40%;
+    padding: 15px;
+}
+
+.verify-customer-data li div:last-child {
+    text-align: center;
+    width: 60%;
+    background: rgba(0, 0%, 0%, 0.088);
+    padding: 15px;
+}
+.verify-customer-btn-area{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.verify-customer-btn{
+    width: 50%;
+    margin: auto;
+}
+
+
+/* Center of body */
+/* Edit proifile area */
+
+.edit-customer-area{
+    width: 95%;
+    min-height: 600px;
+    overflow-y: scroll;
+    background: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+}
+
+.remove-edit-profile{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    right: 0;
+}
+
+.edit-customer-avatar-area{
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    overflow: hidden;
+}
+.edit-customer-avatar-area img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+.edit-customer-data{
+    margin: 0px;
+    padding: 20px;
+    list-style-type: none;
+}
+.edit-customer-data li{
+    display: flex;
+    border-radius: 5px;
+    overflow: hidden;
+    outline:0.5px solid rgba(0, 0, 0, 0.226);
+    margin-bottom: 15px;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+.edit-customer-data li div:first-child {
+    background: #1D1678;
+    text-align: center;
+    color: white;
+    width: 40%;
+    padding: 15px;
+}
+
+.edit-customer-data li div:last-child {
+    text-align: center;
+    width: 60%;
+    background: rgba(0, 0%, 0%, 0.088);
+    padding: 15px;
+}
+.update-customer-btn-area{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.update-customer-btn{
+    width: 50%;
+    margin: auto;
+}
+.edit-first-name input,.edit-last-name input{
+    width: 100%;
+    outline: 0.1px solid rgba(128, 128, 128, 0.22);
+}
+
+.change-password-area{
+    width: 95%;
+    margin: auto;
+    height: 300px;
+}
+.current-password-area,.password-area ,.confirm-password-area{
+    width: 100%;
+    outline: 0.1px solid rgba(0, 0, 0, 0.197);
+    margin: 10px;
+    border-radius: 8px;
+}
+.change-password-area label{
+    background: #1D1678;
+    text-align: center;
+    color: white;
+    width: 40%;
+    padding: 15px;
+    font-size: 10px;
+    border-radius: 8px 0px 0px 8px;
+}
+.change-password-area input{
+    width:55.5%;
+    margin: 0px;
+    padding: 0px;
+    border-radius: 0px 8px 8px 0px;
+    border: none;
+    padding: 9px;
+}
+.change-password-area input:focus {
+    outline: none; /* This removes the focus outline that appears by default in some browsers */
+    border: none; /* This removes the border on focus */
+}
+.change-password-btn-area{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+.change-password{
+    width: 55%;
+}
+/* Edit proifile area */
+
+/* Balance-section */
+
+.balance-section{
+    width: 95%;
+    min-height: 600px;
+    margin: auto;
+    margin-top: 10px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    position: relative;
+    margin-bottom: 50px;
+}
+.deposit-btn-area{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.withdraw-btn-area{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.current-balance-data{
+    margin: 0px;
+    padding: 20px;
+    list-style-type: none;
+}
+.current-balance-data li{
+    display: flex;
+    border-radius: 5px;
+    overflow: hidden;
+    outline:0.5px solid rgba(0, 0, 0, 0.226);
+    margin-bottom: 15px;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    
+}
+.current-balance-data li div:first-child {
+    background: #1D1678;
+    text-align: center;
+    color: white;
+    width: 40%;
+    padding: 15px;
+}
+
+.current-balance-data li div:last-child {
+    text-align: center;
+    width: 60%;
+    background: rgba(0, 0, 0, 0.088);
+    padding: 15px;
+    font-size: 25px;
+}
+
+/* Transactions */
+
+.transactions-list{
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    width: 100%;
+    min-height: 450px;
+}
+.transaction-titles{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 20px;
+    align-items: center;
+}
+.transaction-titles p{
+    border: 1px solid;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    color: white;
+    background: #1D1678;
+    font-size: 15px;
+}
+.transaction{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: -10px;
+
+}
+.transaction p{
+    border: 1px solid;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    color: white;
+    background: #1D1678;
+    font-size: 15px;
+
+}
+
+#transaction-id{
+    width: 10%;
+}
+#transaction-amount{
+    width: 20%;
+}
+#transaction-status{
+    width: 14%;
+}
+#transaction-payemnt-url{
+    width: 25%;
+}
+
+#transaction-direction{
+    width: 14%;
+}
+#transaction-created-at{
+    width: 17%;
+    margin-bottom: 15px;
+}
+
+a.pay-url{
+    display: inline-block;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    min-width: 80%;
+    text-decoration: none;
+}
+#transaction-direction .in{
+    color: green;
+}
+#transaction-direction .out{
+    color: red;
+}
+
+.transactions-next-prev-btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.transactions-next-prev-btn button{
+    width: 110px;
+    margin: 20px;
+}
+
+/* Blanace history */
+
+.balance-histories-list {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    min-height: 450px;
+    width: 100%;
+}
+
+.balance-history-titles {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.balance-history-titles p {
+    border: 1px solid;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    color: white;
+    background: #1D1678;
+    font-size: 15px;
+}
+
+.balance-history {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: -10px;
+}
+
+.balance-history p {
+    border: 1px solid;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    color: black;
+    background: rgba(0, 0, 0, 0.088);
+    font-size: 15px;
+}
+
+#balance-history-amount {
+    width: 25%;
+}
+#balance-history-order-id {
+    width: 25%;
+}
+
+#balance-history-direction {
+    width: 15%;
+}
+#balance-history-last-balance{
+    width: 35%;
+    margin-bottom: 15px;
+}
+
+
+#balance-history-direction .in {
+    color: green;
+}
+
+#balance-history-direction .out {
+    color: red;
+}
+
+.balance-histories-next-prev-btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.balance-histories-next-prev-btn button{
+    width: 110px;
+    margin: 20px;
+}
+/* .up-down-area{
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    position: absolute;
+    right: 20px;
+    bottom: -35px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.transaction-up-down-btn{
+    background-color: white;
+    border: 0px white;
+    border-radius: 50%;
+    width: inherit;
+    height: inherit;
+    background-image: url(/assets/ud.png);
+    background-size: 60px;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+} */
+
+/* Deposit area */
+.deposit-area{
+    min-width: 360px;
+    height: 300px;
+    background: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+}
+
+.remove-deposit-page{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    right: 0;
+}
+.deposit{
+    position: absolute;
+    top: 130px;
+    width: 80%;
+    left: 11%;
+}
+
+.deposit-amount{
+    width: 100%;
+    height: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.267);
+    border-radius: 5px;
+}
+
+.deposit-btn-confirm-area{
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+.deposit-confirm-btn{
+    width: 100px;
+}
+
+.deposit-created{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.deposit-created.hidden{
+    display: none;
+}
+/* Deposit area */
+
+/* Withdraw */
+
+.withdraw-area{
+    min-width: 360px;
+    height: 300px;
+    background: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+}
+
+.remove-withdraw-page{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    right: 0;
+}
+.withdraw{
+    position: absolute;
+    top: 40px;
+    width: 80%;
+    left: 11%;
+}
+
+.withdraw-amount{
+    width: 100%;
+    height: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.267);
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.withdraw-address{
+    width: 100%;
+    height: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.267);
+    border-radius: 5px;
+}
+.withdraw-btn-confirm-area{
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+.withdraw-confirm-btn{
+    width: 100px;
+}
+
+.withdraw-created{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.withdraw-created.hidden{
+    display: none;
+}
+.withdraw-text{
+    display: inline-block;
+    font-size: 12px;
+    color: red;
+}
+/* Withdraw area */
+
+
+/* Withdraw */
+
+/* Order section */
+
+.order-section{
+    width: 95%;
+    min-height: 500px;
+    margin: auto;
+    margin-top: 10px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    position: relative;
+}
+.orders-btns-area{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.orders-btns-area button{
+    margin: 15px;
+    min-width: 80px
+}
+.orders-btns-area button.selected{
+    outline: 1px solid rgb(0, 0, 0);
+    opacity: 0.8;
+}
+.total-orders-count{
+    display: inline-block;
+    min-width: 80px;
+    border-radius: 5px;
+}
+.orders-list{
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    width: 100%;
+    
+}
+
+.order-details{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 20px;
+    align-items: center;
+    text-align: center;
+    background: #1D1678;
+    color: white;
+}
+.order-details p{
+    background: rgba(0, 0, 0, 0.088);
+    padding: 10px;
+    border: 1px solid;;
+    margin: 0px;
+}
+.order{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 20px;
+    align-items: center;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: -15px;
+    position: relative;
+}
+.order p{
+    background: rgba(0, 0, 0, 0.088);
+    padding: 10px;
+    border: 1px solid;;
+}
+
+.view-order-details {
+    width: 100px;
+    height: 20px;
+    position: absolute;
+    top: 68%;
+    font-size: 10px;
+    border-radius: 0px;
+    border: none;
+    background: #0d6efd;
+    color: white;
+}
+
+/* {
+    display: inline-block;
+    width: 150px;
+    height: 20px;
+    font-size: 10px;
+    position: absolute;
+    bottom: 0px;
+} */
+#order-id{
+    width: 10%;
+    cursor: pointer;
+}
+
+#order-status{
+    width: 20%;
+}
+#order-total{
+    width: 20%;
+
+}
+#escrow-status{
+    width: 20%;
+
+}
+#order-feedback{
+    width: 15%;
+
+}
+
+#order-created-at{
+    width: 15%;
+}
+.submit-feedback-btn{
+    color: white;
+    cursor: pointer;
+}
+.feedback_link{
+    text-decoration: none;
+}
+/* update escrow */
+.escrow-btn{
+    padding: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.update-escrow-area{
+    min-width: 360px;
+    max-width: 360px;
+    height: 300px;
+    background: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+}
+.escrow-info-area{
+    margin-top: -50px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    position: relative;
+}
+
+.remove-escrow-page-btn{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    right: 0;
+    z-index: 999;
+}
+
+.escrow-select{
+    width: 190px;
+}
+#escrow-comment{
+    height: 50px;
+}
+.update-escrow-btn-area{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    flex-direction: column;
+}
+.update-escrow-btn{
+    width: 150px;
+}
+/* update escrow */
+
+/* Orderitems */
+.orderitems-area{
+    min-width: 360px;
+    max-width: 360px;
+    height: 400px;
+    background: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+}
+.remove-orderitems-page-btn{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    right: 0;
+    z-index: 999;
+}
+.orderitems-product-area{
+    font-size: 15px;
+    padding: 15px;
+    padding-bottom: 0px;
+}
+
+.orderitems-seller-name{
+    min-width: 250px;
+    max-width: 400px;
+    font-size: 20px;
+    padding: 15px;
+}
+.orderitems-seller-name a{
+    min-width: 400px;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.orders-list{
+    min-height: 450px;
+}
+
+.order-next-prev-btn-area{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.order-next-prev-btn-area button{
+    width: 100px;
+    margin: 15px;
+}
+
+/* Orderitems */
+/* Feedback */
+.feedback-submit-area{
+    min-width: 360px;
+    max-width: 360px;
+    height: 400px;
+    background: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+}
+
+.remove-feedback-submit-page-btn{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    right: 0;
+    z-index: 999;
+}
+.select-feedback-status{
+    width: 80%;
+    margin: auto;
+    margin-top: 100px;
+}
+.comment-feedback-area{
+    width: 85%;
+    margin: auto;
+    padding: 10px;
+}
+.comment-feedback{
+    width: 100%;
+    height: 60px;
+}
+.post-feedback-btn-area{
+    
+    display: flex;
+    justify-content: center;
+
+}
+.post-feedback-btn{
+    width: 150px;
+}
+/* Feedback  */
+
+
+/* Responsive */
+@media screen and (max-width: 820px){
+    .transactions-area{
+        width: 100%;
+        overflow: hidden;
+    }
+    .transactions-list {
+        min-width: 1550px;
+        overflow-x: auto; /* Enable horizontal scrolling */
+        white-space: nowrap; /* Prevent items from wrapping */
+    }
+}
+@media screen and (max-width: 820px) {
+
+    .balance-histories-list p{
+        font-size: 8px;
+    }
+    /* Order table */
+    .orders-list{
+        font-size: 8px;
+        min-height: 350px;
+    }
+    #order-id{
+        width: 11%;
+    }
+    
+    #order-status{
+        width: 12%;
+    }
+    #order-total{
+        width: 20%;
+    }
+    #escrow-status{
+        width: 20%;
+    
+    }
+    #order-feedback{
+        width: 17%;
+    
+    }
+    #order-created-at{
+        width: 20%;
+    }
+    .escrow-btn{
+        font-size: 6px;
+        margin-left:-2px ;
+    }
+    .orders-btns-area button{
+        font-size: 11px;
+    }
+    /* Order Table */
+}

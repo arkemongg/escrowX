@@ -1,0 +1,825 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<!--   03:20:39 GMT -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Escrow</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <!-- CSS 
+    ========================= -->
+    <link rel="stylesheet" href="assets/css/profile.css">
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="assets/css/plugins.css">
+
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+
+</head>
+
+<body>
+
+    <!--header area start-->
+    <!--Offcanvas menu area start-->
+    <div class="off_canvars_overlay">
+
+    </div>
+    <div class="Offcanvas_menu">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="canvas_open">
+                        <a href="javascript:void(0)"><i class="ion-navicon"></i></a>
+                    </div>
+                    <div class="Offcanvas_menu_wrapper">
+                        <div class="canvas_close">
+                            <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
+                        </div>
+                        <div class="search_container">
+                            <form action="#">
+                                <div class="search_box">
+                                    <input placeholder="Search product..." type="text">
+                                    <button type="submit">Search</button>
+                                </div>
+                            </form>
+                        </div>
+
+
+                        <div id="menu" class="text-left ">
+                            <ul class="offcanvas_main_menu">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="products.html">All Products</a></li>
+                                <li><a href="login.html">Login/Register</a></li>
+                                <li><a href="sales.html">Sales</a></li>
+                                <li><a href="profile.html">Profile</a></li>
+                                <li><a href="messages.html">Messages</a></li>
+                                <li><a href="#">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Offcanvas menu area end-->
+
+    <header>
+        <div class="main_header">
+            <!--header top start-->
+            <div class="header_top">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="support_info">
+                                <img src="assets/img/icon/bitcoin.png" alt="bitcoin-logo" style="width: 30px;"> <span
+                                    style="color:#fff;font-size: large;">0000</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="top_right text-right">
+                                <div class="support_info">
+                                    <img src="assets/img/icon/litecoin.png" alt="bitcoin-logo" style="width: 30px;">
+                                    <span style="color:#fff;font-size: large;">0000</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--header top start-->
+            <!--header middel start-->
+            <div class="header_middle">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="logo">
+                                <h1 style="color: #fff;">Escrow</h1>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-6">
+                            <div class="middel_right">
+                                <div class="search_container">
+                                    <form action="#">
+                                        <div class="search_box">
+                                            <input placeholder="Search product..." type="text">
+                                            <button type="submit">Search</button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--header middel end-->
+            <!--header bottom satrt-->
+            <div class="main_menu_area">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="main_menu menu_position">
+                                <nav>
+                                    <ul>
+                                        <li><a href="index.html">Home</a></li>
+                                        <li><a href="products.html">All Products</a></li>
+                                        <li><a href="login.html">Login/Register</a></li>
+                                        <li><a href="sales.html">Sales</a></li>
+                                        <li><a href="profile.html">Profile</a></li>
+                                        <li><a href="messages.html">Messages</a></li>
+                                        <li><a href="#">Logout</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--header bottom end-->
+        </div>
+    </header>
+    <!--header area end-->
+
+    <section class="customer-section">
+        <div class="edit-profile-btn">
+            <button id="edit-profile" class="btn btn-primary">Edit Profile</button>
+        </div>
+        <div class="verify-profile-btn">
+            <button id="verify-profile" class="btn btn-success">Verify</button>
+        </div>
+        <div class="profile-section-title">
+            <h1 style="text-align: center; padding: 10px;">Profile</h1>
+            <hr style="width:80%;margin: auto; ">
+        </div>
+        <div class="customer-avatar-area">
+            <img class="customer-img" src="/assets/img/gamer.png" alt="avatar">
+        </div>
+
+        <div class="customer-details-area">
+            <ul class="customer-data">
+                <li class="email-area">
+                    <div class="title">Email</div>
+                    <div id="email">fetching..</div>
+                </li>
+                <li class="username-area">
+                    <div class="title">Username</div>
+                    <div id="username">Username</div>
+                </li>
+                <li class="firstname-area">
+                    <div class="title">First Name</div>
+                    <div id="firstname">First Name</div>
+                </li>
+                <li class="lastname-area">
+                    <div class="title">Last Name</div>
+                    <div id="lastname">Last Name</div>
+                </li>
+                <li class="verified-user-area">
+                    <div class="title">Verified User</div>
+                    <div id="verified-user">No</div>
+                </li>
+                <li class="super-seller-area">
+                    <div class="title">Super Seller</div>
+                    <div id="super-seller">No</div>
+                </li>
+                <li class="member-since-area">
+                    <div class="title">Member Since</div>
+                    <div id="member-since">00/00/00</div>
+                </li>
+                <li class="member-since-area">
+                    <div class="title">FEEDBACK COUNTS</div>
+                    <div id="member-since" title="green=excellent&#10;blue=good&#10;red=bad">
+                        <span style="color: green" class="excellent-rating">0</span>
+                        <span style="color: rgb(0, 30, 255);" class="good-rating">0</span>
+                        <span style="color: red;" class="bad-rating">0</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Verification -->
+    <section class="blurry-background blurry-background-section verify-customer-section hidden">
+        <div class="verify-customer-area">
+            <button class="btn remove-verify-area"><img style="width: 100%;" src="/assets/close.png" alt=""></button>
+            <h2 style="text-align: center; padding-top: 20px;" class="center">Submit Verification Files</h2>
+            <hr style="width: 80%; margin: auto; padding-bottom: 20px;">
+
+            <ul class="verify-customer-data">
+                <p style="color: cadetblue; text-align: center;">**Max Size 2MB</p>
+                <p class="reason-for-resubmit hidden">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis eligendi harum quia corrupti
+                    officia inventore, ipsum impedit, necessitatibus blanditiis cum vel nihil esse illo provident
+                    nesciunt et doloremque praesentium explicabo! Reiciendis beatae cumque unde sunt et dolorem odio
+                    facere architecto est minus quidem iusto, ad, repellat consequatur odit sint. Provident!
+                </p>
+                <li class="edit-upload-area">
+                    <div class="title">Upload NID Front</div>
+                    <div id="upload-nid-front-img"><input type="file" id="upload-nid-front-img-input" accept="image/*"
+                            placeholder="max-2mb"></div>
+                </li>
+                <li class="edit-upload-area">
+                    <div class="title">Upload NID Back</div>
+                    <div id="upload-nid-back-img"><input type="file" id="upload-nid-back-img-input" accept="image/*"
+                            placeholder="max-2mb"></div>
+                </li>
+                <li class="edit-upload-area">
+                    <div class="title">Upload Selfie</div>
+                    <div id="upload-selfie-img"><input type="file" id="upload-selfie-img-input" accept="image/*"
+                            placeholder="max-2mb"></div>
+                </li>
+            </ul>
+            <p style="text-align: center; font-size: 12px;"
+                class="warning-message shake-text verify-profile-warning hidden">hi</p>
+            <p style="text-align: center; color: green; font-size: 12px;"
+                class=" shake-text verify-profile-success hidden">Successfully Submited</p>
+
+            <div class="verify-customer-btn-area">
+                <button class="btn verify-customer-btn btn-primary">Uplaod</button>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- Verification -->
+
+
+    <!-- Center of screen Edit -->
+    <!-- Profile edit section -->
+    <section class="blurry-background blurry-background-section edit-customer-section hidden">
+        <div class="edit-customer-area">
+            <button class="btn remove-edit-profile"><img style="width: 100%;" src="/assets/close.png" alt=""></button>
+            <div class="edit-customer-avatar-area">
+                <img class="edit-customer-img" src="/assets/gamer.png" alt="avatar">
+            </div>
+            <ul class="edit-customer-data">
+                <p style="color: cadetblue; text-align: center;">**Max Size 2MB</p>
+                <li class="edit-upload-area">
+                    <div class="title">Upload profile</div>
+                    <div id="upload-img"><input type="file" id="image-input" accept="image/*" placeholder="max-2mb">
+                    </div>
+                </li>
+                <li class="edit-firstname-area">
+                    <div class="title">First Name</div>
+                    <div class="edit-first-name">
+                        <input id="edit-first-name">
+                    </div>
+                </li>
+                <li class="edit-lastname-area">
+                    <div class="title">Last Name</div>
+                    <div class="edit-last-name">
+                        <input id="edit-lastname">
+                    </div>
+                </li>
+            </ul>
+            <p style="text-align: center; font-size: 12px;"
+                class="warning-message shake-text edit-profile-warning hidden">hi</p>
+
+            <div class="update-customer-btn-area">
+                <btton class="btn update-customer-btn btn-primary">Update</btton>
+            </div>
+
+            <div class="change-password-area">
+                <h4 style="text-align: center; padding-top: 20px;">Change Password</h4>
+                <hr style="width: 80%; margin: auto; padding-bottom: 20px;">
+                <div class="current-password-area">
+                    <label for="current-password">Current Password</label>
+                    <input type="password" id="current-password" placeholder="current password">
+                </div>
+
+                <div class="password-area">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="password">
+                </div>
+                <div class="confirm-password-area">
+                    <label for="password">Confirm Password</label>
+                    <input type="password" id="confirm-password" placeholder="password">
+                </div>
+                <br>
+                <p style="text-align: center;" class="warning-change-password warning-message shake-text hidden">
+                    warning here</p>
+                <p style="text-align: center; color: green;" class="success-password-change hidden">Successfully
+                    changed the password</p>
+
+                <div class="change-password-btn-area">
+                    <button type="button" class="btn btn-primary change-password">Change Password</button>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+    <!-- Profile edit section ends -->
+
+
+    <!-- Blance Section -->
+
+    <section class="balance-section">
+        <div class="deposit-btn-area">
+            <button class="btn btn-primary btn-deposit-feild">Deposit</button>
+        </div>
+        <div class="withdraw-btn-area">
+            <button class="btn btn-success btn-withdraw-feild">Withdraw</button>
+        </div>
+        <div class="balance-section-title">
+            <h1 style="text-align: center; padding: 10px;">Balance</h1>
+            <hr style="width:80%;margin: auto; ">
+        </div>
+
+        <div class="balance-area">
+            <div class="blance-details">
+                <ul class="current-balance-data">
+                    <li class="current-balance">
+                        <div class="title">Current Blanace</div>
+                        <div style="color: green;" class="balance">fetching.. USD</div>
+                    </li>
+                    <li class="current-hold">
+                        <div class="title">ON HOLD</div>
+                        <div style="color: red;" class="on-hold">fetching.. USD</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="transactions-area">
+                <div class="transactions-title">
+                    <h4 style="text-align: center; padding: 10px;">Transactions</h4>
+                    <hr style="width:80%;margin: auto; ">
+                </div>
+
+                <div class="transations-list-area">
+                    <ul class="transactions-list">
+                        <li class="transaction-titles">
+                            <p id="transaction-id">ID</p>
+                            <p id="transaction-amount">Amount</p>
+                            <p id="transaction-status">Status</p>
+                            <p id="transaction-payemnt-url">Payment URL</p>
+                            <p id="transaction-direction">Direction</p>
+                            <p id="transaction-created-at">Created_At</p>
+                        </li>
+                        <li class="transaction">
+                            <p id="transaction-id">ID</p>
+                            <p id="transaction-amount">Amount</p>
+                            <p id="transaction-status">Status</p>
+                            <p id="transaction-payemnt-url">Payment URL</p>
+                            <p id="transaction-direction">Direction</p>
+                            <p id="transaction-created-at">Created_At</p>
+                        </li>
+                        <!-- <li class="transaction">
+                            <p id="transaction-id">1</p>
+                            <p id="transaction-amount">20000.00</p>
+                            <p id="transaction-status">Pending</p>
+                            <p id="transaction-payemnt-url">
+                                <a href="#" class="pay-url bg-primary text-white">Pay</a>
+                            </p>
+                            <p id="transaction-direction"><span class="in">IN</span></p>
+                            <p id="transaction-created-at">12/20/11</p> 
+                        </li>
+                        <li class="transaction">
+                            <p id="transaction-id">10000000</p>
+                            <p id="transaction-amount">20.00</p>
+                            <p id="transaction-status">COMPLETED</p>
+                            <p id="transaction-payemnt-url">-</p>
+                            <p id="transaction-direction" ><span class="out">out</span></p>
+                            <p id="transaction-created-at">12/10/23</p> 
+                        </li> -->
+                    </ul>
+                    <div class="transactions-next-prev-btn">
+                        <button class="transactions-prev btn btn-primary">Prev</button>
+                        <button class="transactions-next btn btn-primary">Next</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="transactions-area">
+                <div class="transactions-title">
+                    <h4 style="text-align: center; padding: 10px;">Balance Transactions</h4>
+                    <hr style="width:80%;margin: auto; ">
+                </div>
+
+                <div class="balance-histories-list-area">
+                    <ul class="balance-histories-list">
+                        <li class="balance-history-titles">
+                            <p id="balance-history-amount">Amount</p>
+                            <p id="balance-history-order-id">Order ID</p>
+                            <p id="balance-history-direction">Direction</p>
+                            <p id="balance-history-last-balance">Last Balance</p>
+                        </li>
+                        <!-- <li class="balance-history">
+                            <p id="balance-history-amount">20.00</p>
+                            <p id="balance-history-order-id">100000</p>
+                            <p id="balance-history-direction"><span class="out">out</span></p>
+                            <p id="balance-history-last-balance">20000.00</p>
+                        </li> -->
+                        <!-- <li class="balance-history">
+                            <p id="balance-history-id">10000000</p>
+                            <p id="balance-history-amount">20.00</p>
+                            <p id="balance-history-status">COMPLETED</p>
+                            <p id="balance-history-payemnt-url">-</p>
+                            <p id="balance-history-direction" ><span class="out">out</span></p>
+                            <p id="balance-history-created-at">12/10/23</p> 
+                        </li> -->
+                    </ul>
+                    <div class="balance-histories-next-prev-btn">
+                        <button class="balance-histories-prev btn btn-primary">Prev</button>
+                        <button class="balance-histories-next btn btn-primary">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="up-down-area">
+            <button class="transaction-up-down-btn"></button>
+        </div> -->
+    </section>
+    <!-- Deposit Interface -->
+
+    <section class="blurry-background blurry-background-section deposit-section hidden">
+
+        <div class="deposit-area">
+            <button class="btn remove-deposit-page"><img style="width: 100%;" src="/assets/close.png" alt=""></button>
+            <form class="deposit">
+                <input type="number" class="deposit-amount" placeholder="Amount" required>
+                <p class="warning-message shake-text deposit-warning hidden">hi</p>
+                <div class="deposit-btn-confirm-area">
+                    <input value="Deposit" type="submit" class="btn deposit-confirm-btn btn-primary">
+                </div>
+            </form>
+
+            <div class="deposit-created hidden">
+                <h5>Deposit request has been created</h5>
+                <button class=" btn btn-primary"><a target="_blank" style="color: white; text-decoration: none;"
+                        id="pay-now-deposit" href="">Payment Page</a></button>
+                <p>Please check transaction page to pay later.</p>
+                <p>Payment page will expire in 1 hour.</p>
+                <p class="redirect">Redirect in.... <span class="redirect-counter">30</span>s</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- withraw Interface -->
+
+    <section class="blurry-background blurry-background-section withdraw-section hidden">
+
+        <div class="withdraw-area">
+
+            <button class="btn remove-withdraw-page"><img style="width: 100%;" src="/assets/close.png" alt=""></button>
+
+            <form class="withdraw">
+                <span class="withdraw-text">** Please select & submit address carefully</span>
+                <select class="form-select select-crypto" aria-label="Default select example">
+                    <option value="BTC">BTC</option>
+                    <option value="LTC">LTC</option>
+                </select>
+                <input type="number" class="withdraw-amount" placeholder="Amount" required>
+                <input type="text" class="withdraw-address" placeholder="Address" required>
+                <p class="warning-message shake-text withdraw-warning hidden">hi</p>
+                <div class="withdraw-btn-confirm-area">
+                    <input value="Withdraw" type="submit" class="btn withdraw-confirm-btn btn-primary">
+                </div>
+            </form>
+
+            <div class="withdraw-created hidden">
+                <h5>Withdraw request has been created</h5>
+                <p class="redirect">Redirect in.... <span class="redirect-counter-withdraw">10</span>s</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- withraw Interface -->
+
+
+    <!-- Deposit Interface -->
+
+    <!-- Blance Section -->
+
+
+    <section class="order-section">
+        <div class="order-title">
+            <h2 style="text-align: center; padding: 10px;">Orders <span
+                    class="total-orders-count bg-success text-white">0</span></h2>
+            <hr style="width:80%;margin: auto; ">
+        </div>
+        <div class="orders-area">
+            <div class="orders-btns-area">
+                <div class="orders-btns-area">
+                    <div class="pending-orders-btn-area ">
+                        <button class="btn btn-primary selected pending-btn">Pending</button>
+                    </div>
+                    <div class="complete-orders-btn-area">
+                        <button class="btn btn-primary complete-btn btn-success">Complete</button>
+                    </div>
+                    <div class="failed-orders-btn-area">
+                        <button class="btn btn-danger failed-btn">Failed</button>
+                    </div>
+                </div>
+            </div>
+            <div class="orders-data-area">
+
+                <div class="pending-orders">
+                    <ul class="orders-list">
+                        <li class="order-details">
+                            <p id="order-id">ID</p>
+                            <p id="order-status">Status</p>
+                            <p id="order-total">Total</p>
+                            <p id="escrow-status">Escrow</p>
+                            <p id="order-feedback">Feedback</p>
+                            <p id="order-created-at">Created_At</p>
+                        </li>
+                        <!-- <li class="order">
+                            <p id="order-id">10000</p>
+                            <p id="order-status">Pending</p>
+                            <p id="order-total">150.15</p>
+                            <p id="escrow-status"><a class="escrow-btn bg-primary text-white">NOT_RECEIVED</a></p>
+                            <p id="order-feedback">-</p>
+                            <p id="order-created-at">Wed, 19 Jul</p>
+                            <button class="view-order-details">view details</button>
+                        </li> -->
+                        <!-- <li class="order">
+                            <p id="order-id">10000</p>
+                            <p id="order-status">Pending</p>
+                            <p id="order-total">150.15</p>
+                            <p id="escrow-status"><a title="comment" class="escrow-btn bg-primary text-white">COMMENT</a></p>
+                            <p id="order-feedback">-</p>
+                            <p id="order-created-at">Wed, 19 Jul</p>
+                        </li> -->
+                    </ul>
+                </div>
+                <div class="complete-orders hidden">
+                    <ul class="orders-list">
+                        <li class="order-details">
+                            <p id="order-id">ID</p>
+                            <p id="order-status">Status</p>
+                            <p id="order-total">Total</p>
+                            <p id="escrow-status">Escrow</p>
+                            <p id="order-feedback">Feedback</p>
+                            <p id="order-created-at">Created_At</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="failed-orders hidden">
+                    <ul class="orders-list">
+                        <li class="order-details">
+                            <p id="order-id">ID</p>
+                            <p id="order-status">Status</p>
+                            <p id="order-total">Total</p>
+                            <p id="escrow-status">Escrow</p>
+                            <p id="order-feedback">Feedback</p>
+                            <p id="order-created-at">Created_At</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="order-next-prev-btn-area">
+            <button class="order-previous btn btn-primary">Prev</button>
+            <button class="order-next btn btn-primary">Next</button>
+        </div>
+    </section>
+    <section class="blurry-background blurry-background-section escrow-page-section hidden">
+
+        <div class="update-escrow-area">
+            <button class="btn remove-escrow-page-btn"><img style="width: 100%;" src="/assets/close.png"
+                    alt=""></button>
+            <div style="margin-top: 10px; width:100%; height: 40px; display: flex; justify-content: center; "
+                class="escrow-order-id-area">
+                <p style="width:150px; text-align:center;" class="bg-secondary escrow-order-id text-white">#66666
+                </p>
+            </div>
+
+            <div class="escrow-info-area">
+                <div class="escrow-select-options">
+                    <select class="escrow-select">
+                        <option selected>Escrow Status</option>
+                        <option value="RECEIVED">RECEIVED</option>
+                        <!-- <option value="COMMENT">COMMENT</option> -->
+                    </select>
+                </div>
+                <div class="escrow-comment-section">
+                    <input id="escrow-comment" type="text" placeholder="Comment" disabled>
+                </div>
+                <div class="update-escrow-btn-area">
+                    <span style="text-align: center;font-size: 10px;color: red; opacity: 0.6;">Note:**Can't change
+                        the order after you change it to received.</span>
+
+                    <p class="success-escrow hidden"
+                        style="text-align: center;font-size: 10px;color: green; opacity: 0.6;">Successfully updated
+                        the order</p>
+                    <p class="error-escrow hidden" style="text-align: center;font-size: 10px;color: red; opacity: 0.6;">
+                        Error</p>
+
+                    <btton class="btn update-escrow-btn btn-primary">Update</btton>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="blurry-background blurry-background-section orderitems-section hidden">
+
+        <div class="orderitems-area">
+            <button class="btn remove-orderitems-page-btn"><img style="width: 100%;" src="/assets/close.png"
+                    alt=""></button>
+            <div style="margin-top: 10px; width:100%; height: 40px; display: flex; justify-content: center; "
+                class="orderitems-order-id-area">
+                <p style="width:150px; text-align:center;" class="bg-secondary orderitems-order-id text-white">
+                    #66666</p>
+            </div>
+
+            <div class="orderitems-details-area">
+                <div class="orderitems-title-area">
+                    <h4 style="text-align: center;">Orderitems</h4>
+                    <hr style="width: 80%; margin: auto;">
+                    <h6 style="text-align: center; margin: 10px;">Product Details</h6>
+                    <hr style="width: 60%; margin: auto;">
+                </div>
+
+                <div class="orderitems-product-area">
+
+                    <p class="orderitems-product-id-area">
+                        <span>Product_ID :</span> <span class="orderitems-product-id">1</span>
+                    </p>
+                    <p class="orderitems-product-title-area">
+                        <span>Product :</span> <span class="orderitems-product-title">Title</span>
+                    </p>
+                    <p class="orderitems-product-quantity-area">
+                        <span>Quantity :</span> <span class="orderitems-product-quantity">1</span>
+                    </p>
+                    <p class="orderitems-product-price-area">
+                        <span>Price :</span> <span class="orderitems-product-price">Price</span>
+                    </p>
+                </div>
+
+                <div class="orderitems-seller-area">
+                    <h6 style="text-align: center;">Seller Details</h6>
+                    <hr style="width: 60%; margin: auto;">
+                    <div class="orderitems-seller-area">
+                        <p class="orderitems-seller-name">
+                            <span>Name:</span>
+                            <a href="#" class="orderitems-name bg-primary text-white">Ark Emon</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="blurry-background blurry-background-section feedback-submit-section hidden">
+
+        <div class="feedback-submit-area">
+            <button class="btn remove-feedback-submit-page-btn"><img style="width: 100%;" src="/assets/close.png"
+                    alt=""></button>
+
+            <select class="form-select select-feedback-status" aria-label="Default select example">
+                <option selected value="1">Rate the Service</option>
+                <option value="E">Excellent</option>
+                <option value="G">GOOD</option>
+                <option value="B">BAD</option>
+            </select>
+            <div class="comment-feedback-area">
+                <input class="comment-feedback" type="text" placeholder="Comment">
+            </div>
+            <p style="text-align: center;" class="warning-message shake-text feedback-warning hidden">Recheck the
+                submission</p>
+            <div class="post-feedback-btn-area">
+                <button class="post-feedback-btn btn btn-primary">Submit</button>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Order Section -->
+
+    <!-- Loading Effect -->
+
+    <div class="blurry-background-section blurry-background loading-effect hidden">
+        <div class="loading"></div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-container">
+
+    </div>
+    <!-- Footer -->
+
+    <script type="module" src="/js/profile.js"></script>
+
+</body>
+
+</html>
+
+<!--footer area start-->
+<footer class="footer_widgets">
+    <div class="footer_top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="widgets_container contact_us">
+                        <div class="logo">
+                            <h1 style="color: #fff;">Escrow</h1>
+                        </div>
+                        <div class="footer_contact">
+                            <p>John draw real poor on call my from. May she mrs furnished discourse extremely. Ask
+                                doubt noisy shade guest Lose away off why half led have near bed. At engage simple
+                                father of period others except</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 col-sm-6">
+                    <div class="widgets_container widget_menu">
+                        <h3>Quick Links</h3>
+                        <div class="footer_menu">
+                            <ul>
+                                <li><a href="about.html">About US</a></li>
+                                <li><a href="contact.html">Contact us</a></li>
+                                <li><a href="#">Escrow Support</a></li>
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 col-sm-6">
+                    <div class="widgets_container widget_menu">
+                        <h3>My Account</h3>
+                        <div class="footer_menu">
+                            <ul>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Terms And Conditions</a></li>
+                                <li><a href="#">Refund And Return Policy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="widgets_container newsletter">
+                        <h3>Follow Us</h3>
+                        <div class="footer_social_link">
+                            <ul>
+                                <li><a class="facebook" href="#" title="Facebook"><i class="fa fa-facebook"></i></a>
+                                </li>
+                                <li><a class="twitter" href="#" title="Twitter"><i class="fa fa-twitter"></i></a>
+                                </li>
+                                <li><a class="instagram" href="#" title="instagram"><i class="fa fa-instagram"></i></a>
+                                </li>
+                                <li><a class="linkedin" href="#" title="linkedin"><i class="fa fa-linkedin"></i></a>
+                                </li>
+                                <li><a class="rss" href="#" title="rss"><i class="fa fa-rss"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="footer_bottom">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-6">
+                    <div class="copyright_area">
+                        <p> <a href="#">Escrow @2023-2024</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="footer_payment text-right">
+                        <a href="#"><img width="100px" src="assets/img/product/Bitcoin_accepted_here_printable.png"
+                                alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--footer area end-->
+<!-- JS
+============================================ -->
+
+
+
+<!-- Plugins JS -->
+<script src="assets/js/plugins.js"></script>
+
+<!-- Main JS -->
+<script src="assets/js/main.js"></script>
+
+<script type="module" src="assets/js/profile.js"></script>
+
+</body>
+
+<!--   03:22:07 GMT -->
+
+</html>

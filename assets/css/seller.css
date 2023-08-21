@@ -1,0 +1,105 @@
+.seller-section{
+    width: 95%;
+    min-height: 500px;
+    margin: auto;
+    margin-top: 10px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    position: relative;
+}
+.contact-seller-btn{
+    margin: 10px;
+    position: relative;
+}
+.seller-avatar-area{
+    overflow: hidden;
+    margin: auto;
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+.seller-avatar-area img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.seller-data{
+    margin: 0px;
+    padding: 20px;
+    list-style-type: none;
+}
+.seller-data li{
+    display: flex;
+    border-radius: 5px;
+    overflow: hidden;
+    outline:0.5px solid rgba(0, 0, 0, 0.226);
+    margin-bottom: 15px;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
+.seller-data li div:first-child {
+    background: #1D1678;
+    text-align: center;
+    color: white;
+    width: 40%;
+    padding: 15px;
+}
+
+.seller-data li div:last-child {
+    text-align: center;
+    width: 60%;
+    background: hsla(0, 0%, 0%, 0.088);
+    padding: 15px;
+}
+
+/* Reviews */
+.last-five-reviews-section{
+    width: 95%;
+    min-height: 500px;
+    margin: auto;
+    margin-top: 10px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    position: relative;
+}
+
+/* REVIEWS */
+
+.reviews-list{
+    min-height: 350px;
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    padding-bottom: 20px;
+}
+.review{
+    width: 90%;
+    margin: auto;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    background: #00000017;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+}
+.name-area{
+    width: 95%;
+    padding-top: 10px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 500;
+}
+.name-area:first-child{
+    margin-top: 20px;
+}
+.comment{
+    width: 95%;
+    margin: auto;
+    margin-top: 10px;
+}
+
