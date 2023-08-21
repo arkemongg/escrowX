@@ -1,6 +1,6 @@
 import { fetchData } from "./fetch.js";
 import { createProductTemplate } from "./templates.js";
-import { apiUrl } from "./urls.js";
+import { apiUrl, domainUrl } from "./urls.js";
 import { nav } from "./nav.js";
 
 const recentItemsUrl = apiUrl+`/api/products/?ordering=-id`
@@ -20,6 +20,8 @@ function recentLoader(url){
                 currentPrice: product.price,
             }
             const temp = createProductTemplate(productData)
+            const a = temp.querySelector('a')
+            a.href = domainUrl+`/product-details.html?product_id=${product.id}`
             recentProducts.appendChild(temp)
         })
     })
@@ -43,6 +45,8 @@ function featuredLoader(url){
                 currentPrice: product.price,
             }
             const temp = createProductTemplate(productData)
+            const a = temp.querySelector('a')
+            a.href = domainUrl+`/product-details.html?product_id=${product.id}`
             featuredProducts.appendChild(temp)
         })
     })
@@ -67,6 +71,8 @@ function mostViewdLoader(url){
                 currentPrice: product.price,
             }
             const temp = createProductTemplate(productData)
+            const a = temp.querySelector('a')
+            a.href = domainUrl+`/product-details.html?product_id=${product.id}`
             mostViewdProducts.appendChild(temp)
         })
     })
