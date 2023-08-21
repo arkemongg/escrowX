@@ -52,16 +52,15 @@
                             </form>
                         </div>
 
-
                         <div id="menu" class="text-left ">
                             <ul class="offcanvas_main_menu">
                                 <li><a href="index.html">Home</a></li>
                                 <li><a href="products.html">All Products</a></li>
-                                <li><a href="login.html">Login/Register</a></li>
-                                <li><a href="sales.html">Sales</a></li>
-                                <li><a href="profile.html">Profile</a></li>
-                                <li><a href="messages.html">Messages</a></li>
-                                <li><a href="#">Logout</a></li>
+                                <li class="login"><a href="login.html">Login/Register</a></li>
+                                <li class="sales hidden"><a href="sales.html">Sales</a></li>
+                                <li class="profile hidden"><a href="profile.html">Profile</a></li>
+                                <li class="message hidden"><a href="messages.html">Messages</a></li>
+                                <li class="logout hidden"><a href="#">Logout</a></li>
                             </ul>
                         </div>
                     </div>
@@ -129,13 +128,13 @@
                             <div class="main_menu menu_position">
                                 <nav>
                                     <ul>
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="products.html">All Products</a></li>
-                                        <li><a href="login.html">Login/Register</a></li>
-                                        <li><a href="sales.html">Sales</a></li>
-                                        <li><a href="profile.html">Profile</a></li>
-                                        <li><a href="messages.html">Messages</a></li>
-                                        <li><a href="#">Logout</a></li>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="products.html">All Products</a></li>
+                                <li class="login"><a href="login.html">Login/Register</a></li>
+                                <li class="sales hidden"><a href="sales.html"></a></li>
+                                <li class="profile hidden"><a href="profile.html"></a></li>
+                                <li class="message hidden"><a href="messages.html"></a></li>
+                                <li class="logout hidden"><a href="#"></a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -162,7 +161,7 @@
         <div class="customer-avatar-area">
             <img class="customer-img" src="/assets/img/gamer.png" alt="avatar">
         </div>
-
+        
         <div class="customer-details-area">
             <ul class="customer-data">
                 <li class="email-area">
@@ -203,6 +202,9 @@
                 </li>
             </ul>
         </div>
+        <div class="sync-profile-btn">
+            <button style="margin: 20px;" id="sync-profile" class="btn btn-success">Sync Profile</button>
+        </div>
     </section>
 
     <!-- Verification -->
@@ -210,8 +212,6 @@
         <div class="verify-customer-area">
             <button class="btn remove-verify-area"><img style="width: 100%;" src="/assets/close.png" alt=""></button>
             <h2 style="text-align: center; padding-top: 20px;" class="center">Submit Verification Files</h2>
-            <hr style="width: 80%; margin: auto; padding-bottom: 20px;">
-
             <ul class="verify-customer-data">
                 <p style="color: cadetblue; text-align: center;">**Max Size 2MB</p>
                 <p class="reason-for-resubmit hidden">
@@ -290,7 +290,7 @@
 
             <div class="change-password-area">
                 <h4 style="text-align: center; padding-top: 20px;">Change Password</h4>
-                <hr style="width: 80%; margin: auto; padding-bottom: 20px;">
+                
                 <div class="current-password-area">
                     <label for="current-password">Current Password</label>
                     <input type="password" id="current-password" placeholder="current password">
@@ -413,6 +413,13 @@
                             <p id="balance-history-direction">Direction</p>
                             <p id="balance-history-last-balance">Last Balance</p>
                         </li>
+                        <li class="balance-history">
+                            <p id="balance-history-amount">Amount</p>
+                            <p id="balance-history-order-id">Order ID</p>
+                            <p id="balance-history-direction">Direction</p>
+                            <p id="balance-history-last-balance">Last Balance</p>
+                        </li>
+                        
                         <!-- <li class="balance-history">
                             <p id="balance-history-amount">20.00</p>
                             <p id="balance-history-order-id">100000</p>
@@ -535,23 +542,22 @@
                             <p id="order-feedback">Feedback</p>
                             <p id="order-created-at">Created_At</p>
                         </li>
-                        <!-- <li class="order">
+                        <li class="order">
                             <p id="order-id">10000</p>
                             <p id="order-status">Pending</p>
                             <p id="order-total">150.15</p>
                             <p id="escrow-status"><a class="escrow-btn bg-primary text-white">NOT_RECEIVED</a></p>
                             <p id="order-feedback">-</p>
                             <p id="order-created-at">Wed, 19 Jul</p>
-                            <button class="view-order-details">view details</button>
-                        </li> -->
-                        <!-- <li class="order">
+                        </li>
+                        <li class="order">
                             <p id="order-id">10000</p>
                             <p id="order-status">Pending</p>
                             <p id="order-total">150.15</p>
-                            <p id="escrow-status"><a title="comment" class="escrow-btn bg-primary text-white">COMMENT</a></p>
+                            <p id="escrow-status"><a class="escrow-btn bg-primary text-white">NOT_RECEIVED</a></p>
                             <p id="order-feedback">-</p>
                             <p id="order-created-at">Wed, 19 Jul</p>
-                        </li> -->
+                        </li>
                     </ul>
                 </div>
                 <div class="complete-orders hidden">

@@ -1,3 +1,6 @@
+import { fetchDataWithJwt } from "./fetch.js";
+import { apiUrl } from "./urls.js";
+
 function getCookie(name) {
     const cookies = document.cookie.split(';');
     for (let i = 0; i < cookies.length; i++) {
@@ -40,3 +43,20 @@ export function removeCookie(name) {
 }
 
 export const userAndToken = getCookie("user");
+
+export function sync(){
+    const url = apiUrl+`/api/customer/`
+    const jwtToken = userAndToken.token
+    fetchDataWithJwt(url,jwtToken)
+    .then(data=>{
+        let user = data[0]
+        let combinedData = {
+            user: user,
+            token: jwtToken
+        };
+        setCookie("user",combinedData)
+        setTimeout(() => {
+            window.location.reload()
+        }, 3000);
+    })
+}

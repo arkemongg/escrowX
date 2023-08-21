@@ -12,7 +12,7 @@ export const nav = ()=>{
     const sales = document.querySelectorAll('.sales')
     const message = document.querySelectorAll('.message')
     const login = document.querySelectorAll('.login')
-    
+
     if(jwt===true){
         logOut.forEach(data=>{
             data.classList.remove('hidden')
@@ -38,7 +38,7 @@ export const nav = ()=>{
             const parent = data.parentElement
             parent.removeChild(data)
         })
-
+        
         if (window.location.href.includes('login')) {
             window.location = domainUrl
         }
