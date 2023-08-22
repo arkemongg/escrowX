@@ -1,17 +1,14 @@
-import { userAndToken } from './cookies.js';
+import { sync, userAndToken } from './cookies.js';
 import { fetchData, postDataJWT } from './fetch.js';
 import { add_loading, loading_effect, remove_loading_timeout, remove_loading_timeout_custom } from './loading.js';
 import {nav} from './nav.js'
 import { apiUrl, domainUrl } from './urls.js';
 
-// loading_effect.classList.remove('hidden')
+add_loading()
 
-// window.onload = () => {
-  
-//   setTimeout(() => {
-//   loading_effect.classList.add('hidden')
-//   }, 3000);
-// };
+window.onload = () => {
+  remove_loading_timeout()
+};
 
 
 const url_params = new URL(window.location)
@@ -64,7 +61,8 @@ if(userAndToken===null){
         const post_create_order = postDataJWT(create_order_url,data_post,userAndToken.token)
         
         post_create_order.then(data=>{
-          if(data.id){  
+          if(data.id){
+            sync()  
             const products_details_section = document.querySelector('.product-details-section')
             const success_section = document.querySelector('.buy-now-success-section')
             success_section.classList.remove('hidden')
@@ -149,7 +147,7 @@ contact_seller_btn.addEventListener('click',event=>{
   if(userAndToken===null){
     add_loading()
     setTimeout(() => {
-      window.location = domainUrl+`login.html`
+      window.location = domainUrl+`/login.html`
     }, 2000);
   }else{
     const seller_id_url = document.querySelector('.seller-details').href

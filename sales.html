@@ -48,7 +48,7 @@
                             <form action="#">
                                 <div class="search_box">
                                     <input placeholder="Search product..." type="text">
-                                    <button type="submit">Search</button>
+                                    <button class="search-nav" type="submit">Search</button>
                                 </div>
                             </form>
                         </div>
@@ -110,7 +110,7 @@
                                     <form action="#">
                                         <div class="search_box">
                                             <input placeholder="Search product..." type="text">
-                                            <button type="submit">Search</button>
+                                            <button class="search-nav" type="submit">Search</button>
                                         </div>
                                     </form>
                                 </div>
@@ -190,14 +190,14 @@
                         <p id="sale-feedback">2</p>
                         <p id="sale-created-at">Sun, 23 Jul</p>
                         </li> -->
-                        <li class="sale">
+                        <!-- <li class="sale">
                             <p id="sale-id">10  <span>|</span> <span class="bg-primary py-1">Order Details</span></p>
                             <p id="sale-status">Failed</p>
                             <p id="sale-total">100</p>
                             <p id="escrow-status">Not_Received</p>
                             <p id="sale-feedback">-</p>
                             <p id="sale-created-at">Sun, 23 Jul</p>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
                 <div class="complete-sales hidden">
@@ -257,35 +257,32 @@
                 <div class="sellitems-product-area">
 
                     <p class="sellitems-product-id-area">
-                        <span>Product ID :</span> <span class="sellitems-product-id">1</span>
+                        <span>Product ID :</span> <span class="sellitems-product-id">fetching</span>
                     </p>
                     <p class="sellitems-product-title-area">
-                        <span>Product :</span> <span class="sellitems-product-title">Title</span>
+                        <span>Product :</span> <span class="sellitems-product-title">fetching</span>
                     </p>
                     <p class="sellitems-product-quantity-area">
-                        <span>Quantity :</span> <span class="sellitems-product-quantity">1</span>
+                        <span>Quantity :</span> <span class="sellitems-product-quantity">fetching</span>
                     </p>
                     <p class="sellitems-product-price-area">
-                        <span>Price :</span> <span class="sellitems-product-price">Price</span>
+                        <span>Price :</span> <span class="sellitems-product-price">fetching</span>
                     </p>
                 </div>
 
                 <div class="sellitems-buyer-area">
                     <h6 style="text-align: center;">Buyer Details</h6>
                     <hr style="width: 60%; margin: auto;">
-                    <div class="sellitems-buyer-area">
-                        <p class="sellitems-buyer-id">
-                            <span>ID: #</span>
-                            <span href="#" class="sellitems-id ">1</span>
-                        </p>
+                    <div class="sellitems-contact-buyer-area">
+                            <button class="btn btn-primary m-2 text-center contact-buyer">Contact Buyer</button>
                     </div>
 
                     <div class="sellitems-shipping-area">
                         <p class="sellitems-shpping">
-                            Shipping Email : <span class="shipping-email">120@gmailc.om</span>
+                            Shipping Email : <span class="shipping-email">fetching</span>
                         </p>
                         <p class="sellitems-shipping-details">
-                            Details : <span class="shipping-details">Lorem ipsum lorem dolor sit amet consectetur
+                            Details : <span class="shipping-details">fetching
                             </span>
                         </p>
                     </div>
@@ -302,9 +299,11 @@
 
     <!-- Sales Section -->
     <section class="myproducts-section">
-        <button class="btn btn-success add-products-btn">
-            Add Products
-        </button>
+        <div class="add-product-btn-area">
+            <button class="btn btn-success add-products-btn">
+                Add Products
+            </button>
+        </div>
 
 
 
@@ -320,7 +319,7 @@
 
             <div class="search-area">
                 <input type="text" id="myproducts-search-input">
-                <button class="btn btn-primary" type="submit">Search</button>
+                <button class="btn btn-primary myproduct-search-btn" type="submit">Search</button>
             </div>
         </div>
         <!-- <select class="form-select sort-myproduct" aria-label="Default select example">

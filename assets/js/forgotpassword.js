@@ -1,11 +1,11 @@
 // Basic loading after load
 import {add_loading, remove_loading_timeout} from './loading.js'
-// add_loading()
-// window.onload = () => {
-//   setTimeout(() => {
-//     remove_loading_timeout()
-//   }, 1000);
-// };
+add_loading()
+window.onload = () => {
+  setTimeout(() => {
+    remove_loading_timeout()
+  }, 1000);
+};
 
 import {nav} from './nav.js'
 import {postData} from './fetch.js'

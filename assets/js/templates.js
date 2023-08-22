@@ -271,3 +271,28 @@ export function generateCompleteSale(completedSaleData) {
 
   return liElement;
 }
+
+
+//My Product
+export function generateMyProductItem(title, imageSrc, price) {
+  var liElement = document.createElement("li");
+  liElement.setAttribute("class", "myproduct");
+
+  liElement.innerHTML = `
+    <div class="myproduct-image-area">
+        <img class="myproduct-image" src="${imageSrc}" alt="">
+    </div>
+    <div class="myproduct-title-area">
+        <h3 class="myproduct-title">
+            ${title}
+        </h3>
+    </div>
+    <div class="myproduct-price-area">
+        <p class="myproduct-price">
+            ${price}<span>$</span> 
+        </p>
+    </div>
+  `;
+
+  return liElement;
+}

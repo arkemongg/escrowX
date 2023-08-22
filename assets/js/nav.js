@@ -23,6 +23,15 @@ pricesWs.onmessage = function (msg) {
     .catch(error => console.log('error', error));
 }
 
+const nav_search = document.querySelectorAll('.search-nav')
+nav_search.forEach(search_btn=>{
+    search_btn.addEventListener('click',event=>{
+        event.preventDefault()
+        
+        const value = event.target.parentElement.querySelector('input').value
+        window.location = domainUrl+`/products.html?search=${value}`
+    })
+})
 
 export const nav = ()=>{
     let jwt = true

@@ -21,7 +21,7 @@ contact_seller_btn.addEventListener('click',event=>{
   if(userAndToken===null){
     add_loading()
     setTimeout(() => {
-      window.location = domainUrl+`login.html`
+      window.location = domainUrl+`/login.html`
     }, 2000);
   }else{
     add_loading()

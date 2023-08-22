@@ -150,10 +150,16 @@
     padding-bottom: 0px;
 }
 
-.sellitems-buyer-id{
+.sellitems-buyer-area{
     font-size: 20px;
     padding: 10px;
     padding-bottom: 0px;
+}
+
+.sellitems-contact-buyer-area{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
 }
 .sellitems-shipping-area{
     width: 95%;
@@ -178,9 +184,7 @@
 }
 
 .add-products-btn{
-    position: absolute;
-    top: 10px;
-    left: 10px;
+    margin: 10px;
 }
 .search-area{
     width: 100%;
@@ -221,22 +225,24 @@
 }
 .myproduct{
     cursor: pointer;
-    width: 250px;
+    width: 300px;
     height: 370px;
     background: white;
     border-radius: 10px;
     overflow: hidden;
     position: relative;
     margin: 20px;
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 .myproduct-image-area{
     width: 100%;
     height: 60%;
     overflow: hidden;
+    display: flex;
 }
 .myproduct-image-area .myproduct-image{
-    width: 100%;
+    width: 250px;
+    height: 250px;
+    margin: auto;
 }
 
 
@@ -245,11 +251,17 @@
     margin: auto;
     min-height: 80px;
     max-height: 90px;
+    overflow: hidden;
+    
+}
+.myproduct-title{
+    font-size: 13px;
 }
 .myproduct-price-area{
     width: 80%;
     margin: auto;
     text-align: center;
+    background: #1D1678;
 }
 .myproduct-price{
     padding: 10px;
@@ -434,8 +446,10 @@
 
     /* My Products */
 
-    .add-products-btn{
-        position: relative;
-        left: 110px;
+    .add-product-btn-area{
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }

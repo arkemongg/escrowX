@@ -1,3 +1,11 @@
+import {add_loading, remove_loading_timeout} from './loading.js'
+add_loading()
+window.onload = () => {
+  setTimeout(() => {
+    remove_loading_timeout()
+  }, 1000);
+};
+
 import { fetchData } from "./fetch.js";
 import { createProductTemplate } from "./templates.js";
 import { apiUrl, domainUrl } from "./urls.js";

@@ -262,3 +262,83 @@ export async function putMultipleImagesJWT(url, imageData, jwtToken) {
 function showAlert(message) {
   alert(message);
 }
+
+export async function patchDataandImageJWT(url, imageFile,jsonData, jwtToken) {
+  try {
+    const formData = new FormData();
+
+    for (const key in jsonData) {
+      
+      formData.append(key, jsonData[key]);
+    }
+
+    
+    if(imageFile!==""){
+      formData.append('image', imageFile);
+    }
+
+    const response = await fetch(url, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `JWT ${jwtToken}`,
+      },
+      body: formData,
+    });
+    
+
+    if (!response.ok) {
+      if (response.status === 401) {
+        // Unauthorized: Token is invalid or expired
+        removeCookie("user");
+        // Display an alert to the user
+        showAlert("Your session has expired. Please log in again.");
+        // Redirect to the login page after 2 seconds
+        setTimeout(() => {
+          window.location = domainUrl + "/login.html";
+        }, 2000);
+      } else if (response.status === 429) {
+        showAlert("Too many requests. Please try again later.");
+      } else {
+        const errorData = await response.json();
+        console.log(errorData); // Log error data
+        return errorData;
+      }
+    }
+
+    return await response.json();
+  } catch (error) {
+    return error;
+  }
+}
+
+// POST DATA AND IMAGE
+
+export async function postDataandImageJWT(url, imageFile,jsonData, jwtToken) {
+  try {
+    const formData = new FormData();
+
+    for (const key in jsonData) {
+      formData.append(key, jsonData[key]);
+    }
+
+    if(imageFile!==""){
+      formData.append('image', imageFile);
+    }
+
+    const response = await fetch(url, {
+      method: 'POST', // or 'PATCH' if needed
+      headers: {
+        'Authorization': `JWT ${jwtToken}`,
+      },
+      body: formData, // Send the FormData object with both JSON data and the image
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok.');
+    }
+
+    return await response.json();
+  } catch (error) {
+    return error;
+  }
+}

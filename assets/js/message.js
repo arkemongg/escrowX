@@ -1,27 +1,17 @@
-import { add_loading, createConversationElement, createMyMessageLi, createOtherMessageLi, getDataJWT, loading_effect, remove_loading_timeout } from './templates.js';
-
-loading_effect.classList.remove('hidden')
-
+import { userAndToken } from './cookies.js';
+import { fetchDataWithJwt } from './fetch.js';
+import { add_loading, remove_loading_timeout, remove_loading_timeout_custom } from './loading.js';
+import { nav } from './nav.js';
+import { apiUrl } from './urls.js';
+add_loading()
 window.onload = () => {
-  
-  setTimeout(() => {
-  loading_effect.classList.add('hidden')
-  }, 1000);
+  remove_loading_timeout_custom(4000)
 };
 
 
-import {} from './nav.js'
-
-import {insertFooter} from './footer.js'
-document.addEventListener('DOMContentLoaded', insertFooter);
-
-import {jwtToken} from './validate_account.js'
-import { createProductElement,createLatestProductElement ,getData, getRandomNumbers} from './templates.js';
-import { api_image_url, api_url, domain_url, websocket_url } from './urls.js';
-
 const conversations = document.querySelector('.conversations')
 
-const conversations_url = api_url+`api/conversations/`
+const conversations_url = apiUrl+`/api/conversations/`
 
 function getSellerSubstring(seller) {
   if (seller.length <= 3) {
@@ -32,7 +22,7 @@ function getSellerSubstring(seller) {
 }
 const list = []
 function conversation_loader(conversations_url){
-    const get_conversation = getDataJWT(conversations_url,jwtToken)
+    const get_conversation = fetchDataWithJwt(conversations_url,userAndToken.token)
     const prev_btn = document.querySelector('.prev-btn')
     const next_btn = document.querySelector('.next-btn')
     get_conversation.then(data=>{

@@ -4,7 +4,12 @@ import { apiUrl, domainUrl } from "./urls.js"
 import {fetchDataWithJwt, patchDataWithImageJWT,patchDataWithJWT,postDataJWT,putMultipleImagesJWT} from "./fetch.js"
 import { add_loading, remove_loading, remove_loading_timeout, remove_loading_timeout_custom, remove_loading_timeout_reload } from "./loading.js"
 import { generateBalanceHistory, generateCompleteOrder, generateFailedOrder, generatePendingOrder, generateTransaction } from "./templates.js"
-
+add_loading()
+window.onload = () => {
+  setTimeout(() => {
+    remove_loading_timeout()
+  }, 1000);
+};
 
 const edit_profile_btn = document.getElementById('edit-profile')
 const edit_customer_img = document.querySelector('.edit-customer-img')
@@ -960,8 +965,8 @@ update_escrow_btn.addEventListener('click',event=>{
             update_escrow_btn.classList.add('disabled')
             const success = document.querySelector('.success-escrow')
             success.classList.remove('hidden')
-            remove_loading()
-            
+            remove_loading_timeout_custom(1000)
+            sync()
             setTimeout(() => {
                 window.location.reload()
             }, 3000);

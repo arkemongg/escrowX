@@ -1,10 +1,15 @@
 import { userAndToken } from './cookies.js'
-import { fetchDataWithJwt } from './fetch.js'
-import { add_loading, remove_loading, remove_loading_timeout } from './loading.js'
+import { fetchData, fetchDataWithJwt, patchDataandImageJWT, postDataJWT, postDataandImageJWT } from './fetch.js'
+import { add_loading, remove_loading, remove_loading_timeout, remove_loading_timeout_custom } from './loading.js'
 import {nav} from './nav.js'
-import { generateCompleteSale, generateFailedSales, generatePendingSale } from './templates.js'
+import { createProductTemplate, generateCompleteSale, generateFailedSales, generateMyProductItem, generatePendingSale } from './templates.js'
 import { apiUrl, domainUrl } from './urls.js'
-
+add_loading()
+window.onload = () => {
+  setTimeout(() => {
+    remove_loading_timeout()
+  }, 1000);
+};
 
 // Sales 
 const pending_sales_list = document.querySelector('.pending-sales .sales-list')
@@ -138,18 +143,17 @@ async function sales(sale_url) {
 
 
 
-                const order_id = event.target.textContent
-
+                let order = event.target.closest('p')
                 
+                const order_id = order.getAttribute('data-order-id');
+                console.log(order_id);
                 const items = getOrderItem(order_id)[0]
-
-                console.log(items);
                 sell_items_id.textContent = "#"+order_id
                 sell_items_product_id.textContent = items.product
                 sell_items_product_title.textContent = items.product_title
                 sell_items_product_quantity.textContent = items.quantity
                 sell_items_product_price.textContent = items.unit_price +"$"
-
+                
                 
                 const shipping_email = document.querySelector('.shipping-email')
                 const shipping_details = document.querySelector('.shipping-details')
@@ -157,6 +161,41 @@ async function sales(sale_url) {
                 shipping_email.textContent = items.shipping[0].email
                 shipping_details.textContent = items.shipping[1].comment
                 
+                const contact = document.querySelector('.contact-buyer')
+                contact.addEventListener('click',event=>{
+                    const seller_id = order.getAttribute('data-buyer-id');
+                    console.log(seller_id);
+                    if(userAndToken===null){
+                        add_loading()
+                        setTimeout(() => {
+                          window.location = domainUrl+`login.html`
+                        }, 2000);
+                      }else{
+                        add_loading()
+                        if(userAndToken.user.id == seller_id){
+                            remove_loading_timeout_custom(1000)
+                            alert("Own Account")
+                            return
+                        }
+                        const post_url = apiUrl+`/api/conversations/`
+                        const send_data = {
+                          "seller_id":seller_id
+                        }
+                        const post_data = postDataJWT(post_url,send_data,userAndToken.token)
+                    
+                        post_data.then(data=>{
+                          if(data.id){
+                            setTimeout(() => {
+                              window.location = domainUrl+`/messages.html?id=${data.id}`
+                            }, 3000);
+                          }else{
+                            remove_loading_timeout()
+                            alert(data.error)
+                          }
+                        })
+                      }
+                })
+
             })
 
         })
@@ -275,7 +314,7 @@ failed_sales_btn.addEventListener('click',event=>{
 // My Product Area
 const my_products_list = document.querySelector('.myproducts-list')
 
-const my_product_api_url = api_url+`api/myproducts/?limit=8&ordering=-id`
+const my_product_api_url = apiUrl+`/api/myproducts/?limit=8&ordering=-id`
 
 // Save to sessionStorage
 function getItemFromSessionStorage(itemName) {
@@ -300,7 +339,7 @@ function getItem(itemName, id) {
 }
 
 // Create Category Select
-const category_data = getData(api_url+`api/category/`)
+const category_data = fetchData(apiUrl+`/api/category/`)
 category_data.then(data=>{
     
     const edit_category = document.getElementById('edit-category')
@@ -320,8 +359,8 @@ category_data.then(data=>{
 })
 
 function myProductsLoader(my_product_api_url){
-    loading_effect.classList.remove('hidden')
-    const myproducts_data = getDataJWT(my_product_api_url,jwtToken)
+    
+    const myproducts_data = fetchDataWithJwt(my_product_api_url,jwtToken)
     const product_count = document.querySelector('.product-count')
 
     const myproducts_prev_btn = document.querySelector('.myproduct-prev')
@@ -338,7 +377,7 @@ function myProductsLoader(my_product_api_url){
         
         data.forEach(product=>{
 
-            const image = api_image_url+ product.image
+            const image = apiUrl+ product.image
 
             const title = product.title
             const price = product.price
@@ -371,7 +410,7 @@ function myProductsLoader(my_product_api_url){
                 // Image area
                 const edit_image_preview = document.getElementById('edit-img-preview')
                 const edit_image = document.getElementById('edit-img')
-                const image_preview = api_image_url+ product.image
+                const image_preview = apiUrl+ product.image
                 edit_image_preview.src = image_preview
 
                 edit_image.addEventListener('change', function() {
@@ -415,25 +454,17 @@ function myProductsLoader(my_product_api_url){
 
 
         })
-
-
-
-        // Add Hidden loading effect
-        setTimeout(() => {
-            loading_effect.classList.add('hidden')
-        }, 2000);
     })
 }
 myProductsLoader(my_product_api_url)
 
 
 // Search Area
-const search_btn = document.getElementById('myproduct-search-btn')
+const search_btn = document.querySelector('.myproduct-search-btn')
 const search_input = document.getElementById('myproducts-search-input')
 search_btn.addEventListener('click',event=>{
     const search_value = search_input.value
-    console.log(event);
-    const url = api_url+`api/myproducts/?limit=8&search=${search_value}`
+    const url = apiUrl+`/api/myproducts/?limit=8&search=${search_value}`
     my_products_list.innerHTML = ``
     myProductsLoader(url)
 })
@@ -441,7 +472,7 @@ search_btn.addEventListener('click',event=>{
 // remove search 
 search_input.addEventListener('input',event=>{
     if(event.target.value===""){
-        const url = api_url+`api/myproducts/?limit=8`
+        const url = apiUrl+`/api/myproducts/?limit=8`
         my_products_list.innerHTML = ``
         myProductsLoader(url)
     }
@@ -457,6 +488,8 @@ myproducts_prev_btn.addEventListener('click',event=>{
     if(url==="null"){
         return;
     }
+    add_loading()
+    remove_loading_timeout()
     my_products_list.innerHTML = ``
     myProductsLoader(url)
 })
@@ -465,6 +498,8 @@ myproducts_next_btn.addEventListener('click',event=>{
     if(url==="null"){
         return;
     }
+    add_loading()
+    remove_loading_timeout()
     my_products_list.innerHTML = ``
     myProductsLoader(url)
 })
@@ -499,7 +534,7 @@ const create_products_page_section = document.querySelector('.create-product-sec
 const create_products_page_btn = document.querySelector('.remove-create-product-page-btn');
 const add_product_btn =  document.querySelector('.add-products-btn')
 create_products_page_btn.addEventListener('click', event => {
-    console.log(event);
+    
     create_products_page_section.classList.toggle('hidden');
 });
 
@@ -519,7 +554,14 @@ create_submit_btn.addEventListener('click', event => {
     const create_condition = document.getElementById('create-condition');
     const create_image = document.getElementById('create-img');
     const imageFile = create_image.files[0];
-    
+    if (imageFile) {
+        const fileSizeInMB = imageFile.size / (1024 * 1024); // Convert bytes to megabytes
+      
+        if (fileSizeInMB > 2) {
+          alert("Selected image is larger than 2MB");
+          return;
+        }
+    }
     if (
         create_title.value.trim() === '' ||
         create_description.value.trim() === '' ||
@@ -544,18 +586,24 @@ create_submit_btn.addEventListener('click', event => {
         "condition": create_condition.value,
     };
 
-    const post_url = api_url+`api/myproducts/`
+    const post_url = apiUrl+`/api/myproducts/`
     const post_data = postDataandImageJWT(post_url,imageFile,data,jwtToken)
-
-    loading_effect.classList.remove('hidden')
+    add_loading()
     post_data.then(data=>{
         if(data.id){
+            remove_loading_timeout()
+            my_products_list.innerHTML = ""
+            
             setTimeout(() => {
-                window.location.reload()
-            }, 2000);
+                myProductsLoader(my_product_api_url)
+                alert("success")
+            }, 1000);
+            const remove = document.querySelector('.remove-create-product-page-btn');
+           
+            remove.click()
         }else{
             setTimeout(() => {
-                loading_effect.classList.add('hidden')
+                remove_loading()
                 const error = document.querySelector('.create-product-error')
                 error.classList.remove('hidden')
                 error.textContent = data
@@ -590,9 +638,18 @@ edit_submit_btn.addEventListener('click',event=>{
         
         const product_id = edit_product_id.textContent.replace("#", "")
 
-        const patch_api_url = api_url+`api/myproducts/${product_id}/`
+        const patch_api_url = apiUrl+`/api/myproducts/${product_id}/`
 
         const imageFile = edit_image.files[0];
+        if (imageFile) {
+            const fileSizeInMB = imageFile.size / (1024 * 1024); // Convert bytes to megabytes
+          
+            if (fileSizeInMB > 2) {
+              alert("Selected image is larger than 2MB");
+              return;
+            }
+        }
+
         let src =""
 
         const data = {
@@ -611,12 +668,17 @@ edit_submit_btn.addEventListener('click',event=>{
 
         const patch_data = patchDataandImageJWT(patch_api_url,src,data,jwtToken)
         
-        loading_effect.classList.remove('hidden')
+        add_loading()
         patch_data.then(data=>{
             if(data.id){
+                remove_loading_timeout()
+                my_products_list.innerHTML = ""
                 setTimeout(() => {
-                    window.location.reload()
-                }, 2000);
+                    myProductsLoader(my_product_api_url)
+                    alert("success")
+                }, 1000);
+                const remove = document.querySelector('.remove-edit-product-page-btn');
+                remove.click()
             }else{
                 console.log(data);
                 setTimeout(() => {
