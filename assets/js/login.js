@@ -1,8 +1,16 @@
+import {add_loading, remove_loading_timeout, remove_loading_timeout_custom_location} from './loading.js'
+add_loading()
+window.onload = () => {
+  setTimeout(() => {
+    remove_loading_timeout()
+  }, 1000);
+};
+
 import {setCookie} from "./cookies.js";
 import { postData,fetchDataWithJwt } from "./fetch.js";
 import { nav } from "./nav.js";
 
-import { apiUrl } from "./urls.js";
+import { apiUrl, domainUrl } from "./urls.js";
 
 const username = document.getElementById('username')
 const password = document.getElementById('password')
@@ -26,6 +34,7 @@ loginBtn.addEventListener('click',event=>{
     const url = apiUrl+`/auth/jwt/create/`
     const postLogin = postData(url,data)
     postLogin.then(data=>{
+        add_loading()
         if(data.access){
             let jwtToken = data.access
             const url = apiUrl+`/api/customer/`
@@ -37,9 +46,11 @@ loginBtn.addEventListener('click',event=>{
                     token: jwtToken
                 };
                 setCookie("user",combinedData)
+                remove_loading_timeout_custom_location(3000,domainUrl+`/profile.html`)
             })
             
         }else{
+            remove_loading_timeout()
             err.textContent = "Invalid login details."
             err.classList.remove('hidden')
         }

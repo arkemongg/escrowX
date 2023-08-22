@@ -798,7 +798,8 @@ a.pay-url{
 }
 
 .escrow-select{
-    width: 190px;
+    width: 250px;
+    height: 50px;
 }
 #escrow-comment{
     height: 50px;

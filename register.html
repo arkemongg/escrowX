@@ -27,7 +27,7 @@
 
 <body>
 
-    <!--header area start-->
+  <!--header area start-->
     <!--Offcanvas menu area start-->
     <div class="off_canvars_overlay">
 
@@ -52,16 +52,15 @@
                             </form>
                         </div>
 
-
                         <div id="menu" class="text-left ">
                             <ul class="offcanvas_main_menu">
                                 <li><a href="index.html">Home</a></li>
                                 <li><a href="products.html">All Products</a></li>
-                                <li><a href="login.html">Login/Register</a></li>
-                                <li><a href="sales.html">Sales</a></li>
-                                <li><a href="profile.html">Profile</a></li>
-                                <li><a href="messages.html">Messages</a></li>
-                                <li><a href="#">Logout</a></li>
+                                <li class="login"><a href="login.html">Login/Register</a></li>
+                                <li class="sales hidden"><a href="sales.html">Sales</a></li>
+                                <li class="profile hidden"><a href="profile.html">Profile</a></li>
+                                <li class="message hidden"><a href="messages.html">Messages</a></li>
+                                <li class="logout hidden"><a href="#">Logout</a></li>
                             </ul>
                         </div>
                     </div>
@@ -129,13 +128,13 @@
                             <div class="main_menu menu_position">
                                 <nav>
                                     <ul>
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="products.html">All Products</a></li>
-                                        <li><a href="login.html">Login/Register</a></li>
-                                        <li><a href="sales.html">Sales</a></li>
-                                        <li><a href="profile.html">Profile</a></li>
-                                        <li><a href="messages.html">Messages</a></li>
-                                        <li><a href="#">Logout</a></li>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="products.html">All Products</a></li>
+                                <li class="login"><a href="login.html">Login/Register</a></li>
+                                <li class="sales hidden"><a href="sales.html"></a></li>
+                                <li class="profile hidden"><a href="profile.html"></a></li>
+                                <li class="message hidden"><a href="messages.html"></a></li>
+                                <li class="logout hidden"><a href="#"></a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -155,7 +154,7 @@
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><a href="index-2.html">home</a></li>
+                            <li><a href="index.html">home</a></li>
                             <li>Register</li>
                         </ul>
                     </div>
@@ -196,11 +195,12 @@
                                         </div>
                                         <div class="single-acc-field">
                                             <label for="confirm-password">Confirm Password</label>
-                                            <input type="confirm-password" id="confirm-password"
+                                            <input type="password" id="confirm-password"
                                                 placeholder="At least 6 Charecter">
                                         </div>
+                                        <p style="color: red;" class="error hidden">Error</p>
                                         <div class="single-acc-field">
-                                            <button type="submit">Register now</button>
+                                            <button class="register-btn" type="submit">Register now</button>
                                         </div>
                                         <a href="login.html">Already account? Login</a>
                                     </form>
@@ -297,6 +297,11 @@
         </div>
     </footer>
     <!--footer area end-->
+        <!-- Loading Effect -->
+
+        <div class="blurry-background-section blurry-background loading-effect hidden">
+            <div class="loading"></div>
+        </div>
 
     <!-- JS
 ============================================ -->
@@ -308,7 +313,7 @@
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
 
-
+        <script type="module" src="/assets/js/registration.js"></script>
 
 </body>
 
