@@ -749,6 +749,7 @@ a.pay-url{
 #order-created-at{
     min-width: 10%;
     max-width: 10%;
+    font-size: 10px;
 }
 
 .submit-feedback-btn{

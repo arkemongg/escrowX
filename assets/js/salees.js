@@ -1,9 +1,11 @@
-import { userAndToken } from './cookies.js'
-import { fetchDataWithJwt } from './fetch.js'
-import { add_loading, remove_loading, remove_loading_timeout } from './loading.js'
-import {nav} from './nav.js'
-import { generateCompleteSale, generateFailedSales, generatePendingSale } from './templates.js'
-import { apiUrl, domainUrl } from './urls.js'
+import {} from './nav.js'
+
+import {insertFooter} from './footer.js'
+document.addEventListener('DOMContentLoaded', insertFooter);
+
+import {jwtToken} from './validate_account.js'
+import {add_loading, createCompleteOrderTemplate, createFailedOrderTemplate, createPendingOrderTemplate, createSaleElement, generateMyProductItem, generateTransaction, generate_balance_history, getData,getDataJWT,loading_effect,patchDataWithImageJWT,patchDataWithJWT,  patchDataandImageJWT,  postDataJWT, postDataandImageJWT, remove_loading_timeout} from './templates.js';
+import { api_image_url, api_url, domain_url } from './urls.js';
 
 
 // Sales 
@@ -21,14 +23,13 @@ remove_sellitems_page_btn.addEventListener('click',event=>{
 })
 
 // OrderItems Aka SaleItems page
-const customerData = userAndToken
-const jwtToken = userAndToken.token
-console.log(customerData);
 
-const sale_url = apiUrl+`/api/sales/?order_status=P`
+
+
+const sale_url = api_url+`api/sales/?limit=8`
 
 async function sales(sale_url) {
-    const sale_data = fetchDataWithJwt(sale_url, jwtToken);
+    const sale_data = getDataJWT(sale_url, jwtToken);
     const sales_prev_btn = document.querySelector('.sales-previous')
     const sales_next_btn = document.querySelector('.sales-next')
 
@@ -60,66 +61,43 @@ async function sales(sale_url) {
         sales_next_btn.setAttribute('data-next-url',data.next)
         const sales_count = document.querySelector('.total-sales-count')
         sales_count.textContent = count
+        let p = 0;
+        let f = 0;
+        let c = 0;
         data = data.results
 
         data.forEach(order=>{
             let li = ""
-            let date = new Date(order.created_at)
-            const formattedDate = date.toUTCString().slice(0, 11);
-            
             if(order.order_status == "P"){
-                const pendingSaleData = {
-                    id: order.id,
-                    status: "Pending",
-                    total: order.total,
-                    escrowStatus: order.escrow_status,
-                    feedback: '-',
-                    created_at: formattedDate
-                };
+                p++;
+                let date = new Date(order.created_at)
                 console.log(order);
-                li = generatePendingSale(
-                    pendingSaleData
+                let feedback;
+                
+
+                li = createSaleElement(
+                    order.id,order.order_status,
+                    order.total,order.escrow_status,
+                    "None",date.toUTCString().slice(0, 11)
                 )
                 pending_sales_list.appendChild(li)
             }else if(order.order_status == "C"){
-
+                c++;
+                let date = new Date(order.created_at)
+                console.log(order);
                 let feedback;
-                if(order.feedback!=null){
-                    if(order.feedback.completed===false){
-                        feedback = "None"
-                    }else{
-                        feedback = `<a class="bg-primary p-1" target="_blank" href="${domainUrl}/seller.html?seller__id=${userAndToken.user.id}&id=${order.feedback.id}" class="feedback_sales">${order.feedback.id}</a>`
-                    }
-                }
 
-                console.log(feedback);
-                const completedSaleData = {
-                    id: order.id,
-                    status: "Completed",
-                    total: order.total,
-                    escrowStatus: "Received",
-                    feedback: feedback,
-                    created_at: "Sun, 23 Jul"
-                  };
-                  
-                li = generateCompleteSale(
-                   completedSaleData
+                if(order.feedback.completed===false){
+                    feedback = "None"
+                }else{
+                    feedback = `<a target="_blank" href="${domain_url}seller.html?seller__id=${localStorage.getItem('my_id')}&id=${order.feedback.id}" class="feedback_sales">${order.feedback.id}</a>`
+                }
+                li = createSaleElement(
+                    order.id,order.order_status,
+                    order.total,order.escrow_status,
+                    feedback,date.toUTCString().slice(0, 11)
                 )
                 complete_sales_list.appendChild(li)
-            }else if(order.order_status == "F"){
-                const failedSaleData = {
-                    id: order.id,
-                    status: "Failed",
-                    total: order.total,
-                    escrowStatus: "Not_Received",
-                    feedback: '-',
-                    created_at: formattedDate
-                };
-                console.log(order);
-                li = generateFailedSales(
-                    failedSaleData
-                )
-                failed_sales_list.appendChild(li)
             }
             
             setOrderItems(order.id, order.orderitems);
@@ -159,6 +137,14 @@ async function sales(sale_url) {
                 
             })
 
+
+            const pending_btn = document.querySelector('.pending-sales-btn')
+            const complete_btn = document.querySelector('.complete-sales-btn')
+            const failed_btn = document.querySelector('.failed-sales-btn')
+            
+            pending_btn.textContent = `Pending ${p}`
+            complete_btn.textContent = `Complete ${c}`
+            failed_btn.textContent = `Failed ${f}`
         })
     })
 
@@ -173,6 +159,7 @@ const sales_next_btn = document.querySelector('.sales-next')
 sales_prev_btn.addEventListener('click',event=>{
     const url = sales_prev_btn.getAttribute('data-prev-url')
     if(url==="null"){
+        
         return;
     }
     add_loading()
@@ -211,12 +198,6 @@ const complete_sales_btn = document.querySelector('.complete-sales-btn')
 const failed_sales_btn = document.querySelector('.failed-sales-btn')
 
 pending_sales_btn.addEventListener('click',event=>{
-    add_loading()
-    let orders_list = document.querySelectorAll('.sales-list .sale')
-    
-    orders_list.forEach(order=>{
-        order.remove()
-    })
     complete_sales_btn.classList.remove('selected')
     failed_sales_btn.classList.remove('selected')
 
@@ -225,19 +206,9 @@ pending_sales_btn.addEventListener('click',event=>{
 
     complete_sales.classList.add('hidden')
     failed_sales.classList.add('hidden')
-
-    const sale_url = apiUrl+`/api/sales/?order_status=P`
-    sales(sale_url)
-    remove_loading_timeout()
 })
 
 complete_sales_btn.addEventListener('click',event=>{
-    add_loading()
-    let orders_list = document.querySelectorAll('.sales-list .sale')
-    
-    orders_list.forEach(order=>{
-        order.remove()
-    })
     pending_sales_btn.classList.remove('selected')
     failed_sales_btn.classList.remove('selected')
 
@@ -246,19 +217,9 @@ complete_sales_btn.addEventListener('click',event=>{
 
     pending_sales.classList.add('hidden')
     failed_sales.classList.add('hidden')
-
-    const sale_url = apiUrl+`/api/sales/?order_status=C`
-    sales(sale_url)
-    remove_loading_timeout()
 })
 
 failed_sales_btn.addEventListener('click',event=>{
-    add_loading()
-    let orders_list = document.querySelectorAll('.sales-list .sale')
-    
-    orders_list.forEach(order=>{
-        order.remove()
-    })
     pending_sales_btn.classList.remove('selected')
     complete_sales_btn.classList.remove('selected')
 
@@ -267,9 +228,6 @@ failed_sales_btn.addEventListener('click',event=>{
 
     pending_sales.classList.add('hidden')
     complete_sales.classList.add('hidden')
-    const sale_url = apiUrl+`/api/sales/?order_status=F`
-    sales(sale_url)
-    remove_loading_timeout()
 })
 
 // My Product Area

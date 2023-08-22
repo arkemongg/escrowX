@@ -54,7 +54,7 @@
 .sale-details p {
     background: rgba(0, 0, 0, 0.088);
     padding: 10px;
-    border: 1px solid;
+    border: 1px solid white;
     margin: 0px;
 }
 
@@ -67,37 +67,45 @@
     text-align: center;
     margin-top: 5px;
     margin-bottom: -15px;
+   color: white;
 }
 
 .sale p {
-    background: rgba(0, 0, 0, 0.088);
+    background: #1D1678;
     padding: 10px;
     border: 1px solid;
 }
 
 #sale-id {
-    width: 10%;
+    min-width: 25%;
+    max-width: 25%;
     cursor: pointer;
 }
 
 #sale-status {
-    width: 20%;
+    min-width: 15%;
+    max-width: 15%;
 }
 
 #sale-total {
-    width: 20%;
+    min-width: 20%;
+    max-width: 20%;
 }
 
 #escrow-status {
-    width: 20%;
+    min-width: 15%;
+    max-width: 15%;
 }
 
 #sale-feedback {
-    width: 15%;
+    min-width: 10%;
+    max-width: 10%;
 }
 
 #sale-created-at {
-    width: 15%;
+    min-width: 15%;
+    max-width: 15%;
+    font-size: 12px;
 }
 
 .sales-next-prev-btn-area{
@@ -107,6 +115,10 @@
 .sales-next-prev-btn-area button{
     width: 150px;
     margin: 10px;
+}
+
+.sale #sale-created-at{
+    margin-bottom: 15px;
 }
 /* Sales */
 
@@ -402,38 +414,28 @@
 
 
 /* Responsvie */
-
+@media screen and (max-width: 1020px) {
+    .sales-list{
+        display: flex;
+        overflow-x: auto; /* Enable horizontal scrolling */
+        white-space: nowrap; /* Prevent items from wrapping */
+        padding: 0;
+        list-style: none;
+        flex-direction: column;
+    }
+    .sale-details{
+        width: 950px;
+    }
+    .sale{
+        width: 950px;
+    }
+}
 @media screen and (max-width: 820px) {
 
-    /* Sales */
-
-    .sales-btns-area .btn{
-        width: 80px;
-        font-size: 10px;
-        
-    }
-    .sales-list{
-        font-size: 8px;
-        text-align: left;
-    }
-    .sale p {
-        padding-left: 0px;
-        padding-right: 0px;
-    }
-    .sales-list{
-        min-height: 300px;
-    }
     /* My Products */
 
     .add-products-btn{
         position: relative;
         left: 110px;
     }
-    /* .edit-product-area{
-        max-width: 350px;
-    } */
-/* Style the container with overflow-y auto */
-
-/* Custom scrollbar track */
-
 }

@@ -212,3 +212,62 @@ export function createReviewLi(status, sellerName, reviewerName, comment) {
 }
 
 // Create Review
+
+// Pending sales
+
+export function generatePendingSale(pendingSaleData) {
+  const liElement = document.createElement("li");
+  liElement.className = "sale";
+
+  const saleTemplate = `
+    <p id="sale-id">${pendingSaleData.id} <span>|</span> <span class="bg-primary py-1">Order Details</span></p>
+    <p id="sale-status">${pendingSaleData.status}</p>
+    <p id="sale-total">${pendingSaleData.total}</p>
+    <p id="escrow-status">${pendingSaleData.escrowStatus}</p>
+    <p id="sale-feedback">${pendingSaleData.feedback}</p>
+    <p id="sale-created-at">${pendingSaleData.created_at}</p>
+  `;
+
+  liElement.innerHTML = saleTemplate;
+
+  return liElement;
+}
+
+// Failed sales 
+export function generateFailedSales(failedOrderData) {
+  const liElement = document.createElement("li");
+  liElement.className = "sale";
+
+  const failedOrderTemplate = `
+    <p id="sale-id">${failedOrderData.id} <span>|</span> <span class="bg-primary py-1">Order Details</span></p>
+    <p id="sale-status">Failed</p>
+    <p id="sale-total">${failedOrderData.total}</p>
+    <p id="escrow-status">${failedOrderData.escrowStatus}</p>
+    <p id="sale-feedback">${failedOrderData.feedback}</p>
+    <p id="sale-created-at">${failedOrderData.created_at}</p>
+  `;
+
+  liElement.innerHTML = failedOrderTemplate;
+
+  return liElement;
+}
+
+// Complete Sales
+
+export function generateCompleteSale(completedSaleData) {
+  const liElement = document.createElement("li");
+  liElement.className = "sale";
+
+  const saleTemplate = `
+    <p id="sale-id">${completedSaleData.id} <span>|</span> <span class="bg-primary py-1">Order Details</span></p>
+    <p id="sale-status">Completed</p>
+    <p id="sale-total">${completedSaleData.total}</p>
+    <p id="escrow-status">${completedSaleData.escrowStatus}</p>
+    <p id="sale-feedback">${completedSaleData.feedback}</p>
+    <p id="sale-created-at">${completedSaleData.created_at}</p>
+  `;
+
+  liElement.innerHTML = saleTemplate;
+
+  return liElement;
+}

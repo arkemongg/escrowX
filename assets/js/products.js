@@ -2,12 +2,13 @@ import { fetchData } from './fetch.js';
 import { add_loading, remove_loading_timeout,loading_effect } from './loading.js';
 import { createProductTemplate } from './templates.js';
 import { apiUrl, domainUrl } from './urls.js';
-// add_loading()
-// window.onload = () => {
-//   setTimeout(() => {
-//   remove_loading_timeout()
-//   }, 1000);
-// };
+import { nav } from './nav.js';
+add_loading()
+window.onload = () => {
+  setTimeout(() => {
+  remove_loading_timeout()
+  }, 1000);
+};
 
 // add the category to select
 const category_data = fetchData(apiUrl + `/api/category/`)
@@ -25,10 +26,21 @@ category_data.then(data => {
 
 // add the category to select
 
-// Prodct Loader
+// Product Loader
 
+const url = new URL(window.location)
+let search_item = url.searchParams.get('search')
+console.log(search_item);
 const products_list = document.querySelector('.products-list')
-const products_url = apiUrl + `/api/products/?limit=8`
+let products_url = ""
+
+if(search_item!=null){
+  const search_input = document.querySelector('#search-product')
+  search_input.value = search_item
+  products_url =  apiUrl + `/api/products/?limit=8&&search=${search_item}`
+}else{
+  products_url =  apiUrl + `/api/products/?limit=8`
+}
 
 function ProductLoader(product_url) {
 
@@ -39,8 +51,7 @@ function ProductLoader(product_url) {
   const page_number = document.getElementById('page-number')
   products_data.then(data => {
     if (data.count) {
-      // Set btns
-      console.log(product_url);
+
       const searchParams = new URLSearchParams(url.search);
 
       let offset = searchParams.get('offset')
@@ -79,7 +90,6 @@ function ProductLoader(product_url) {
         const temp = createProductTemplate(productData)
         const a = temp.querySelector('a')
         a.href = domainUrl + `/product-details.html?product_id=${product.id}`
-        console.log(temp);
         products_list.appendChild(temp)
       })
 

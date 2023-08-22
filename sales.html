@@ -28,7 +28,6 @@
 </head>
 
 <body>
-
     <!--header area start-->
     <!--Offcanvas menu area start-->
     <div class="off_canvars_overlay">
@@ -54,16 +53,15 @@
                             </form>
                         </div>
 
-
                         <div id="menu" class="text-left ">
                             <ul class="offcanvas_main_menu">
                                 <li><a href="index.html">Home</a></li>
                                 <li><a href="products.html">All Products</a></li>
-                                <li><a href="login.html">Login/Register</a></li>
-                                <li><a href="sales.html">Sales</a></li>
-                                <li><a href="profile.html">Profile</a></li>
-                                <li><a href="messages.html">Messages</a></li>
-                                <li><a href="#">Logout</a></li>
+                                <li class="login"><a href="login.html">Login/Register</a></li>
+                                <li class="sales hidden"><a href="sales.html">Sales</a></li>
+                                <li class="profile hidden"><a href="profile.html">Profile</a></li>
+                                <li class="message hidden"><a href="messages.html">Messages</a></li>
+                                <li class="logout hidden"><a href="#">Logout</a></li>
                             </ul>
                         </div>
                     </div>
@@ -82,14 +80,14 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="support_info">
                                 <img src="assets/img/icon/bitcoin.png" alt="bitcoin-logo" style="width: 30px;"> <span
-                                    style="color:#fff;font-size: large;">0000</span>
+                                    style="color:#fff;font-size: large;" class="btc-price">0000</span>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="top_right text-right">
                                 <div class="support_info">
                                     <img src="assets/img/icon/litecoin.png" alt="bitcoin-logo" style="width: 30px;">
-                                    <span style="color:#fff;font-size: large;">0000</span>
+                                    <span style="color:#fff;font-size: large;" class="ltc-price">0000</span>
                                 </div>
                             </div>
                         </div>
@@ -131,13 +129,13 @@
                             <div class="main_menu menu_position">
                                 <nav>
                                     <ul>
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="products.html">All Products</a></li>
-                                        <li><a href="login.html">Login/Register</a></li>
-                                        <li><a href="sales.html">Sales</a></li>
-                                        <li><a href="profile.html">Profile</a></li>
-                                        <li><a href="messages.html">Messages</a></li>
-                                        <li><a href="#">Logout</a></li>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="products.html">All Products</a></li>
+                                <li class="login"><a href="login.html">Login/Register</a></li>
+                                <li class="sales hidden"><a href="sales.html"></a></li>
+                                <li class="profile hidden"><a href="profile.html"></a></li>
+                                <li class="message hidden"><a href="messages.html"></a></li>
+                                <li class="logout hidden"><a href="#"></a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -149,7 +147,6 @@
         </div>
     </header>
     <!--header area end-->
-
 
     <!-- Sales Section -->
     <section class="sale-section">
@@ -186,13 +183,21 @@
                         </li>
                         <!-- Add your sale items here -->
                         <!-- <li class="sale">
-                        <p id="sale-id" class="bg-primary text-white">10</p>
+                        <p id="sale-id">10  <span>|</span> <span class="bg-primary py-1">Order Details</span></p>
                         <p id="sale-status">P</p>
                         <p id="sale-total">100</p>
                         <p id="escrow-status">Not_Received</p>
                         <p id="sale-feedback">2</p>
                         <p id="sale-created-at">Sun, 23 Jul</p>
-                    </li> -->
+                        </li> -->
+                        <li class="sale">
+                            <p id="sale-id">10  <span>|</span> <span class="bg-primary py-1">Order Details</span></p>
+                            <p id="sale-status">Failed</p>
+                            <p id="sale-total">100</p>
+                            <p id="escrow-status">Not_Received</p>
+                            <p id="sale-feedback">-</p>
+                            <p id="sale-created-at">Sun, 23 Jul</p>
+                        </li>
                     </ul>
                 </div>
                 <div class="complete-sales hidden">
@@ -607,7 +612,10 @@
     <!--footer area end-->
     <!-- JS
 ============================================ -->
-
+<!-- Loding area -->
+<div class="blurry-background-section blurry-background loading-effect hidden">
+    <div class="loading"></div>
+</div>
 
 
     <!-- Plugins JS -->
