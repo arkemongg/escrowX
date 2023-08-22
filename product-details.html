@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Drophut - Single Product eCommerce Template</title>
+    <title>Escrow</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -22,7 +22,7 @@
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/custom.css">
-
+    <link rel="stylesheet" href="/assets/css/product-details.css">
 </head>
 
 <body>
@@ -52,16 +52,15 @@
                             </form>
                         </div>
 
-
                         <div id="menu" class="text-left ">
                             <ul class="offcanvas_main_menu">
                                 <li><a href="index.html">Home</a></li>
                                 <li><a href="products.html">All Products</a></li>
-                                <li><a href="login.html">Login/Register</a></li>
-                                <li><a href="sales.html">Sales</a></li>
-                                <li><a href="profile.html">Profile</a></li>
-                                <li><a href="messages.html">Messages</a></li>
-                                <li><a href="#">Logout</a></li>
+                                <li class="login"><a href="login.html">Login/Register</a></li>
+                                <li class="sales hidden"><a href="sales.html">Sales</a></li>
+                                <li class="profile hidden"><a href="profile.html">Profile</a></li>
+                                <li class="message hidden"><a href="messages.html">Messages</a></li>
+                                <li class="logout hidden"><a href="#">Logout</a></li>
                             </ul>
                         </div>
                     </div>
@@ -129,13 +128,13 @@
                             <div class="main_menu menu_position">
                                 <nav>
                                     <ul>
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="products.html">All Products</a></li>
-                                        <li><a href="login.html">Login/Register</a></li>
-                                        <li><a href="sales.html">Sales</a></li>
-                                        <li><a href="profile.html">Profile</a></li>
-                                        <li><a href="messages.html">Messages</a></li>
-                                        <li><a href="#">Logout</a></li>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="products.html">All Products</a></li>
+                                <li class="login"><a href="login.html">Login/Register</a></li>
+                                <li class="sales hidden"><a href="sales.html"></a></li>
+                                <li class="profile hidden"><a href="profile.html"></a></li>
+                                <li class="message hidden"><a href="messages.html"></a></li>
+                                <li class="logout hidden"><a href="#"></a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -156,7 +155,7 @@
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><a href="index-2.html">home</a></li>
+                            <li><a href="index.html">home</a></li>
                             <li>Product details</li>
                         </ul>
                     </div>
@@ -174,7 +173,7 @@
                     <div class="product-details-tab">
                         <div id="img-1" class="zoomWrapper single-zoom">
                             <a href="#">
-                                <img id="zoom1" src="assets/img/product/gift-card.png"
+                                <img class="product-image" id="zoom1" src="assets/img/product/gift-card.png"
                                     data-zoom-image="assets/img/product/gift-card.png" alt="big-1">
                             </a>
                         </div>
@@ -186,19 +185,18 @@
 
 
                             <div class="price_box">
-                                <h1 style="font-size:30px; color: #000;font-weight: bold;">Amazon Gift Card</h1>
-                                <span style="color: #000;" class="current_price">$70.00</span>
+                                <h1 class="product-title" style="font-size:30px; color: #000;font-weight: bold;">Amazon Gift Card</h1>
+                                <span style="color: #000;" class="current_price prodcut-price">$70.00</span>
                             </div>
                             <div class="product_desc">
                                 <ul>
-                                    <li class="vs">Verified Seller</li>
-                                    <li class="ss">Super Seller</li>
+                                    <li id="verified-seller" class="vs">Verified Seller</li>
+                                    <li id="super-seller" class="ss">Super Seller</li>
                                 </ul>
                             </div>
                             <div class="btn-toolbar">
-                                <button type="button" class="btn btn-primary" style="margin-right: 10px;"> Seller
-                                    Details</button>
-                                <button type="button" class="btn btn-primary">Contact Seller</button>
+                                <button type="button" class="btn btn-primary" style="margin-right: 10px;"> <a href="#" class="seller-details">Seller Details</a></button>
+                                <button type="button" class="btn btn-primary contact-seller">Contact Seller</button>
                             </div>
                             <div class="product_d_table">
                                 <form action="#">
@@ -206,23 +204,23 @@
                                         <tbody>
                                             <tr>
                                                 <td class="first_child">Product ID</td>
-                                                <td>#1</td>
+                                                <td class="product-id">#1</td>
                                             </tr>
                                             <tr>
                                                 <td class="first_child">Product Category</td>
-                                                <td>Gift Card</td>
+                                                <td class="product-category" >Gift Card</td>
                                             </tr>
                                             <tr>
-                                                <td class="first_child">Available Quantity</td>
-                                                <td>100</td>
+                                                <td class="first_child ">Available Quantity</td>
+                                                <td class="inventory">100</td>
                                             </tr>
                                             <tr>
-                                                <td class="first_child">Condition</td>
-                                                <td>New</td>
+                                                <td class="first_child ">Condition</td>
+                                                <td class="condition">New</td>
                                             </tr>
                                             <tr>
                                                 <td class="first_child">Viewd</td>
-                                                <td>10 Times</td>
+                                                <td class="prodcut-view-count">10 Times</td>
                                             </tr>
                                         </tbody>
 
@@ -231,8 +229,8 @@
                             </div>
                             <div class="product_variant quantity">
                                 <label>quantity</label>
-                                <input min="1" max="100" value="1" type="number">
-                                <button class="button" type="submit">Buy Now</button>
+                                <input class="quantity-select" min="1" max="100" value="1" type="number">
+                                <button class="button buy-now-btn" type="submit">Buy Now</button>
 
                             </div>
                     </div>
@@ -258,7 +256,7 @@
                         </div>
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="info" role="tabpanel">
-                                <div class="product_info_content">
+                                <div class="product_info_content description">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec
                                         est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare
                                         lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus
@@ -349,6 +347,23 @@
             </div>
         </div>
         </div>
+
+        <section class="blurry-background-section blurry-background buy-now-success-section hidden">
+
+            <div class="buy-now-success">
+                <h1>
+                    Order Successfully created...
+                    </h1>
+                
+                    <div>
+                        <h1 style="text-align:center;">
+                            Order ID # <span id="order-id">20000</span>
+                        </h1>
+                    </div>
+            </div>
+            
+        </section>
+        
         <div class="footer_bottom">
             <div class="container">
                 <div class="row align-items-center">
@@ -368,7 +383,10 @@
         </div>
     </footer>
     <!--footer area end-->
-
+    <!-- Loading area -->
+    <div class="blurry-background-section blurry-background loading-effect hidden">
+        <div class="loading"></div>
+    </div>
     <!-- JS
 ============================================ -->
 
@@ -378,6 +396,7 @@
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
 
+    <script type="module" src="/assets/js/products-details.js"></script>
 
 
 </body>

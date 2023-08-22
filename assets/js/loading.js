@@ -26,4 +26,10 @@ export function remove_loading_timeout_custom(time){
     loading_effect.classList.add('hidden')
   }, time);
 }
+export function remove_loading_timeout_custom_location(time,location){
+  setTimeout(() => {
+    loading_effect.classList.add('hidden')
+    window.location = location
+  }, time);
+}
 // lOADINGS

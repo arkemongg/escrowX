@@ -1,0 +1,17 @@
+.page-area{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-area .btn{
+    width: 150px;
+}
+.page-number-area{
+    margin-top: 10px;
+}
+.page-number-area .btn{
+    width: 50px;
+}

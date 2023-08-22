@@ -1,4 +1,5 @@
-import { userAndToken } from "./cookies.js"
+import { removeCookie, userAndToken } from "./cookies.js"
+import { add_loading, remove_loading_timeout_custom, remove_loading_timeout_custom_location } from "./loading.js";
 import { domainUrl } from "./urls.js"
 console.log(userAndToken);
 export const nav = ()=>{
@@ -47,5 +48,15 @@ export const nav = ()=>{
             window.location = domainUrl
         }
     }
+
+    const logout = document.querySelectorAll('.logout')
+
+    logout.forEach(lu=>{
+        lu.addEventListener('click',event=>{
+            add_loading()
+            removeCookie("user")
+            remove_loading_timeout_custom_location(4000,domainUrl)
+        })
+    })
 }
 nav()

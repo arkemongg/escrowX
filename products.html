@@ -22,7 +22,7 @@
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/custom.css">
-
+    <link rel="stylesheet" href="/assets/css/products.css">
 </head>
 
 <body>
@@ -52,16 +52,15 @@
                             </form>
                         </div>
 
-
                         <div id="menu" class="text-left ">
                             <ul class="offcanvas_main_menu">
                                 <li><a href="index.html">Home</a></li>
                                 <li><a href="products.html">All Products</a></li>
-                                <li><a href="login.html">Login/Register</a></li>
-                                <li><a href="sales.html">Sales</a></li>
-                                <li><a href="profile.html">Profile</a></li>
-                                <li><a href="messages.html">Messages</a></li>
-                                <li><a href="#">Logout</a></li>
+                                <li class="login"><a href="login.html">Login/Register</a></li>
+                                <li class="sales hidden"><a href="sales.html">Sales</a></li>
+                                <li class="profile hidden"><a href="profile.html">Profile</a></li>
+                                <li class="message hidden"><a href="messages.html">Messages</a></li>
+                                <li class="logout hidden"><a href="#">Logout</a></li>
                             </ul>
                         </div>
                     </div>
@@ -129,13 +128,13 @@
                             <div class="main_menu menu_position">
                                 <nav>
                                     <ul>
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="products.html">All Products</a></li>
-                                        <li><a href="login.html">Login/Register</a></li>
-                                        <li><a href="sales.html">Sales</a></li>
-                                        <li><a href="profile.html">Profile</a></li>
-                                        <li><a href="messages.html">Messages</a></li>
-                                        <li><a href="#">Logout</a></li>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="products.html">All Products</a></li>
+                                <li class="login"><a href="login.html">Login/Register</a></li>
+                                <li class="sales hidden"><a href="sales.html"></a></li>
+                                <li class="profile hidden"><a href="profile.html"></a></li>
+                                <li class="message hidden"><a href="messages.html"></a></li>
+                                <li class="logout hidden"><a href="#"></a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -147,6 +146,8 @@
         </div>
     </header>
     <!--header area end-->
+
+
     <section class="products-section">
         <div class="products-head">
             <h1 style="padding: 10px; text-align: center;">Search Product</h1>
@@ -196,8 +197,8 @@
             <div class="container">
                 <div class="row">
                 </div>
-                <div class="row justify-content-center">
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                <div class="row products-list justify-content-center">
+                    <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
                         <div class="single-tranding">
                             <a href="product-details.html">
                                 <div class="tranding-pro-img">
@@ -922,13 +923,22 @@
                                 </div>
                             </a>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
-            <div class="col text-center">
-                <div class="section-title">
-                    <h2><u>Show More</u></h2>
+            <div class="page-area">
+                <div class="next-previous-btn-area">
+                    <button class="prev-product-btn btn btn-primary">
+                        Prev
+                    </button>
+                    <button class="next-product-btn btn btn-primary">
+                        Next
+                    </button>
+                </div>
+            
+                <div class="page-number-area">
+                        <span>Page: </span> <input id="page-number" type="number">/<span id="total-page">000</span> <button class="btn btn-primary go-to-page">GO</button>
                 </div>
             </div>
         </section><!--Tranding product-->
@@ -1022,6 +1032,12 @@
                 </div>
             </div>
         </footer>
+
+            <!-- Loading Effect -->
+
+    <div class="blurry-background-section blurry-background loading-effect hidden">
+        <div class="loading"></div>
+    </div>
         <!--footer area end-->
         <!-- JS
     ============================================ -->
@@ -1034,6 +1050,7 @@
         <!-- Main JS -->
         <script src="assets/js/main.js"></script>
 
+        <script type="module" src="/assets/js/products.js"></script>
 
 
 </body>

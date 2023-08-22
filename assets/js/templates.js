@@ -84,7 +84,7 @@ export function generatePendingOrder(pendingOrderData) {
   liElement.className = "order";
 
   const orderTemplate = `
-      <p id="order-id">${pendingOrderData.id} <span style="background-color: #0D6EFD; padding: 5px;">more details</span></p>
+      <p id="order-id">${pendingOrderData.id}  |   <span style="background-color: #0D6EFD; padding: 5px;">more details</span></p>
       <p id="order-status">${pendingOrderData.status}</p>
       <p id="order-total">${pendingOrderData.total}</p>
       <p id="escrow-status"><a class="escrow-btn bg-primary text-white">Update Escrow Status</a></p>
@@ -102,7 +102,7 @@ export function generatePendingOrder(pendingOrderData) {
 export function generateFailedOrder(failedOrderData) {
   const liElement = document.createElement("li");
   liElement.className = "order";
-  const order_id = `${failedOrderData.id} <span style="background-color: #0D6EFD; padding: 5px;">more details</span>`;
+  const order_id = `${failedOrderData.id}  |  <span style="background-color: #0D6EFD; padding: 5px;">more details</span>`;
   const orderTemplate = `
       <p id="order-id">${order_id}</p>
       <p id="order-status">${failedOrderData.status}</p>
@@ -123,7 +123,7 @@ export function generateCompleteOrder(completeOrderData) {
   const liElement = document.createElement("li");
   liElement.className = "order";
   console.log(completeOrderData);
-  const order_id = `${completeOrderData.id} <span style="background-color: #0D6EFD; padding: 5px;">more details</span>`;
+  const order_id = `${completeOrderData.id}  |  <span style="background-color: #0D6EFD; padding: 5px;"> more details</span>`;
 
   const orderTemplate = `
       <p id="order-id">${order_id}</p>
@@ -138,3 +138,77 @@ export function generateCompleteOrder(completeOrderData) {
 
   return liElement;
 }
+
+// Create Review
+export function createReviewLi(status, sellerName, reviewerName, comment) {
+  // Map status to color
+  let color;
+  switch (status) {
+      case 'E':
+          color = 'green';
+          status = 'Excellent';
+          break;
+      case 'B':
+          color = 'red';
+          status = 'Bad';
+          break;
+      case 'G':
+          color = 'blue';
+          status = 'Good';
+          break;
+      default:
+          color = 'black'; // Default color if status is not recognized
+          break;
+  }
+
+  // Create the <li> element
+  const li = document.createElement('li');
+  li.className = 'review';
+
+  // Create the name area
+  const nameArea = document.createElement('div');
+  nameArea.className = 'name-area';
+
+  const sellerNameArea = document.createElement('div');
+  sellerNameArea.className = 'seller-name-area';
+  sellerNameArea.innerHTML = `Seller: <span class="seller-name">${sellerName}</span>`;
+  nameArea.appendChild(sellerNameArea);
+
+  const reviewerNameArea = document.createElement('div');
+  reviewerNameArea.className = 'reviewer-name-area';
+  reviewerNameArea.innerHTML = `Reviewer: <span class="reviewer-name">${reviewerName}</span>`;
+  nameArea.appendChild(reviewerNameArea);
+
+  const rating = document.createElement('div');
+  rating.className = 'rating';
+  rating.innerHTML = `Rating: <span class="status" style="color: ${color};">${status}</span>`;
+  nameArea.appendChild(rating);
+
+  li.appendChild(nameArea);
+
+  // Create the comment area
+  const commentArea = document.createElement('div');
+  commentArea.className = 'comment-area';
+
+  const heading = document.createElement('h6');
+  heading.style.textAlign = 'center';
+  heading.style.padding = '10px';
+  heading.textContent = 'Comment';
+  commentArea.appendChild(heading);
+
+  const hr = document.createElement('hr');
+  hr.style.width = '80%';
+  hr.style.margin = 'auto';
+  commentArea.appendChild(hr);
+
+  const commentText = document.createElement('div');
+  commentText.className = 'comment';
+  commentText.textContent = comment;
+  commentArea.appendChild(commentText);
+
+  li.appendChild(commentArea);
+
+  return li;
+}
+
+// Create Review

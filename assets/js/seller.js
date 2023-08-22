@@ -1,21 +1,15 @@
-import { add_loading, createReviewLi, getData, loading_effect, postDataJWT, remove_loading } from './templates.js';
+import { userAndToken } from './cookies.js';
+import { fetchData, postDataJWT } from './fetch.js';
+import { add_loading, remove_loading_timeout, remove_loading_timeout_custom } from './loading.js';
+import {nav} from './nav.js'
+import { createReviewLi } from './templates.js';
+// add_loading()
 
-loading_effect.classList.remove('hidden')
+// window.onload = () => {
+//   remove_loading_timeout()
+// };
 
-window.onload = () => {
-  setTimeout(() => {
-  loading_effect.classList.add('hidden')
-  }, 1000);
-};
-
-
-import {} from './nav.js'
-
-import {insertFooter} from './footer.js'
-document.addEventListener('DOMContentLoaded', insertFooter);
-
-import {jwtToken} from './validate_account.js'
-import { api_url, domain_url } from './urls.js';
+import { apiUrl, domainUrl } from './urls.js';
 
 // Seller Profile
 const url= new URL(window.location)
@@ -24,35 +18,41 @@ const seller__id = url.searchParams.get('seller__id')
 const contact_seller_btn = document.querySelector('.contact-seller-btn')
 
 contact_seller_btn.addEventListener('click',event=>{
-  if(jwtToken==undefined){
+  if(userAndToken===null){
     add_loading()
     setTimeout(() => {
-      window.location = domain_url+`login.html`
+      window.location = domainUrl+`login.html`
     }, 2000);
   }else{
-    
     add_loading()
-
-    const post_url = api_url+`api/conversations/`
-    const send_data = {
-      "seller_id":seller__id
+    const url = new URL(window.location)
+    const seller_id = url.searchParams.get('seller__id')
+    if(userAndToken.user.id == seller_id){
+        remove_loading_timeout_custom(1000)
+        alert("Own Account")
+        return
     }
-    const post_data = postDataJWT(post_url,send_data,jwtToken)
+    const post_url = apiUrl+`/api/conversations/`
+    const send_data = {
+      "seller_id":seller_id
+    }
+    const post_data = postDataJWT(post_url,send_data,userAndToken.token)
 
     post_data.then(data=>{
       if(data.id){
         setTimeout(() => {
-          window.location = domain_url+`message.html?id=${data.id}`
+          window.location = domainUrl+`/messages.html?id=${data.id}`
         }, 3000);
       }else{
-        remove_loading()
-        contact_seller_btn.textContent = 'Please try later'
+        remove_loading_timeout()
+        alert(data.error)
       }
     })
   }
 
 })
-const seller_profile_url = api_url+`api/seller/${seller__id}/`
+
+const seller_profile_url = apiUrl+`/api/seller/${seller__id}/`
 
 function SellerLoader(seller_profile_url){
     const seller_img = document.querySelector('.seller-img')
@@ -64,7 +64,7 @@ function SellerLoader(seller_profile_url){
     const feedback_counts  = document.getElementById('feedback-counts')
 
 
-    const seller_data = getData(seller_profile_url)
+    const seller_data = fetchData(seller_profile_url)
 
     seller_data.then(data=>{
       
@@ -115,10 +115,10 @@ if(id===null){
 }
 const reviews_list =  document.querySelector('.reviews-list')
 
-const reviews_url = api_url+`api/feedback/?seller__id=${seller__id}&id=${id}`
+const reviews_url = apiUrl+`/api/feedback/?seller__id=${seller__id}&id=${id}`
 
 function ReviewsLoader(reviews_url){
-  const reviews_data = getData(reviews_url)
+  const reviews_data = fetchData(reviews_url)
 
   reviews_data.then(data=>{
     if(data.count === 0){
@@ -135,5 +135,5 @@ function ReviewsLoader(reviews_url){
     }
   })
 }
-console.log(reviews_url);
+
 ReviewsLoader(reviews_url)

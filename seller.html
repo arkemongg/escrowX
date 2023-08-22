@@ -26,8 +26,7 @@
 </head>
 
 <body>
-
-    <!--header area start-->
+  <!--header area start-->
     <!--Offcanvas menu area start-->
     <div class="off_canvars_overlay">
 
@@ -52,16 +51,15 @@
                             </form>
                         </div>
 
-
                         <div id="menu" class="text-left ">
                             <ul class="offcanvas_main_menu">
                                 <li><a href="index.html">Home</a></li>
                                 <li><a href="products.html">All Products</a></li>
-                                <li><a href="login.html">Login/Register</a></li>
-                                <li><a href="sales.html">Sales</a></li>
-                                <li><a href="profile.html">Profile</a></li>
-                                <li><a href="messages.html">Messages</a></li>
-                                <li><a href="#">Logout</a></li>
+                                <li class="login"><a href="login.html">Login/Register</a></li>
+                                <li class="sales hidden"><a href="sales.html">Sales</a></li>
+                                <li class="profile hidden"><a href="profile.html">Profile</a></li>
+                                <li class="message hidden"><a href="messages.html">Messages</a></li>
+                                <li class="logout hidden"><a href="#">Logout</a></li>
                             </ul>
                         </div>
                     </div>
@@ -129,13 +127,13 @@
                             <div class="main_menu menu_position">
                                 <nav>
                                     <ul>
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="products.html">All Products</a></li>
-                                        <li><a href="login.html">Login/Register</a></li>
-                                        <li><a href="sales.html">Sales</a></li>
-                                        <li><a href="profile.html">Profile</a></li>
-                                        <li><a href="messages.html">Messages</a></li>
-                                        <li><a href="#">Logout</a></li>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="products.html">All Products</a></li>
+                                <li class="login"><a href="login.html">Login/Register</a></li>
+                                <li class="sales hidden"><a href="sales.html"></a></li>
+                                <li class="profile hidden"><a href="profile.html"></a></li>
+                                <li class="message hidden"><a href="messages.html"></a></li>
+                                <li class="logout hidden"><a href="#"></a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -304,7 +302,10 @@
     <!-- JS
 ============================================ -->
 
-
+        <!-- Loading area -->
+        <div class="blurry-background-section blurry-background loading-effect hidden">
+            <div class="loading"></div>
+        </div>
 
     <!-- Plugins JS -->
     <script src="assets/js/plugins.js"></script>
@@ -312,7 +313,7 @@
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
 
-    <script src="assets/js/seller.js"></script>
+    <script type="module" src="assets/js/seller.js"></script>
 
 </body>
 
