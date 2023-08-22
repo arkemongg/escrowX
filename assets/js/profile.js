@@ -848,6 +848,11 @@ const failed_btn = document.querySelector('.failed-btn')
 
 pending_btn.addEventListener('click',event=>{
     add_loading()
+    let orders_list = document.querySelectorAll('.orders-list .order')
+    
+    orders_list.forEach(order=>{
+        order.remove()
+    })
     complete_btn.classList.remove('selected')
     failed_btn.classList.remove('selected')
 
@@ -864,6 +869,11 @@ pending_btn.addEventListener('click',event=>{
 
 complete_btn.addEventListener('click',event=>{
     add_loading()
+    let orders_list = document.querySelectorAll('.orders-list .order')
+    
+    orders_list.forEach(order=>{
+        order.remove()
+    })
     pending_btn.classList.remove('selected')
     failed_btn.classList.remove('selected')
 
@@ -878,6 +888,11 @@ complete_btn.addEventListener('click',event=>{
 })
 failed_btn.addEventListener('click',event=>{
     add_loading()
+    let orders_list = document.querySelectorAll('.orders-list .order')
+    
+    orders_list.forEach(order=>{
+        order.remove()
+    })
     pending_btn.classList.remove('selected')
     complete_btn.classList.remove('selected')
 
