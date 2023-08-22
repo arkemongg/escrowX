@@ -325,27 +325,10 @@
 .transaction-titles{
     display: flex;
     width: 100%;
-    justify-content: space-between;
     margin-top: 20px;
     align-items: center;
 }
 .transaction-titles p{
-    border: 1px solid;
-    text-align: center;
-    padding: 10px;
-    width: 100%;
-    color: white;
-    background: #1D1678;
-    font-size: 15px;
-}
-.transaction{
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    margin-top: -10px;
-
-}
-.transaction p{
     border: 1px solid;
     text-align: center;
     padding-top: 10px;
@@ -354,27 +337,49 @@
     color: white;
     background: #1D1678;
     font-size: 15px;
-
+}
+.transaction{
+    display: flex;
+    width: 100%;
+    margin-top: -10px;
+    width: 100%;
+}
+.transaction p{
+    border: 1px solid white;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    color: white;
+    background: #1D1678;
+    font-size: 15px;
 }
 
 #transaction-id{
-    width: 10%;
+    min-width: 15%;
+    max-width: 15%;
 }
 #transaction-amount{
-    width: 20%;
+    min-width: 20%;
+    max-width: 20%;
+
 }
 #transaction-status{
-    width: 14%;
+    min-width: 8%;
+    max-width: 8%;
 }
 #transaction-payemnt-url{
-    width: 25%;
+    min-width: 22%;
+    max-width: 22%;
 }
 
 #transaction-direction{
-    width: 14%;
+    min-width: 15%;
+    max-width: 15%;
 }
 #transaction-created-at{
-    width: 17%;
+    min-width: 20%;
+    max-width: 20%;
     margin-bottom: 15px;
 }
 
@@ -384,12 +389,6 @@ a.pay-url{
     padding-bottom: 5px;
     min-width: 80%;
     text-decoration: none;
-}
-#transaction-direction .in{
-    color: green;
-}
-#transaction-direction .out{
-    color: red;
 }
 
 .transactions-next-prev-btn{
@@ -421,7 +420,7 @@ a.pay-url{
 }
 
 .balance-history-titles p {
-    border: 1px solid;
+    border: 1px solid white;
     text-align: center;
     padding: 10px;
     width: 100%;
@@ -438,7 +437,7 @@ a.pay-url{
 }
 
 .balance-history p {
-    border: 1px solid;
+    border: 1px solid white;
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -666,7 +665,6 @@ a.pay-url{
     padding: 0px;
     list-style-type: none;
     width: 100%;
-    
 }
 
 .order-details{
@@ -726,29 +724,33 @@ a.pay-url{
     bottom: 0px;
 } */
 #order-id{
-    width: 10%;
+    min-width: 20%;
+    max-width: 20%;
     cursor: pointer;
 }
 
 #order-status{
-    width: 20%;
+    min-width: 15%;
+    max-width: 15%;
 }
 #order-total{
-    width: 20%;
-
+    min-width: 20%;
+    max-width: 20%;
 }
 #escrow-status{
-    width: 20%;
-
+    min-width: 20%;
+    max-width: 20%;
 }
 #order-feedback{
-    width: 15%;
-
+    min-width: 15%;
+    max-width: 15%;
 }
 
 #order-created-at{
-    width: 15%;
+    min-width: 10%;
+    max-width: 10%;
 }
+
 .submit-feedback-btn{
     color: white;
     cursor: pointer;

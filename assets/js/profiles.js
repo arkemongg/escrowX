@@ -1,3 +1,4 @@
+import { add_loading } from './loading.js';
 import {} from './nav.js'
 
 
@@ -215,405 +216,405 @@ import {} from './nav.js'
 
 // })
 
-// Change Password
+// // Change Password
 
-const change_password_btn = document.querySelector('.change-password')
+// const change_password_btn = document.querySelector('.change-password')
 
-change_password_btn.classList.add('.change-password')
+// change_password_btn.classList.add('.change-password')
 
-change_password_btn.addEventListener('click',event=>{
-    function validatePassword(password) {
-        // Regular expressions to check for uppercase, lowercase, and number
-        const uppercaseRegex = /[A-Z]/;
-        const lowercaseRegex = /[a-z]/;
-        const numberRegex = /[0-9]/;
+// change_password_btn.addEventListener('click',event=>{
+//     function validatePassword(password) {
+//         // Regular expressions to check for uppercase, lowercase, and number
+//         const uppercaseRegex = /[A-Z]/;
+//         const lowercaseRegex = /[a-z]/;
+//         const numberRegex = /[0-9]/;
       
-        // Check if the password meets all the requirements
-        const hasUppercase = uppercaseRegex.test(password);
-        const hasLowercase = lowercaseRegex.test(password);
-        const hasNumber = numberRegex.test(password);
+//         // Check if the password meets all the requirements
+//         const hasUppercase = uppercaseRegex.test(password);
+//         const hasLowercase = lowercaseRegex.test(password);
+//         const hasNumber = numberRegex.test(password);
         
-        // Check if the password length is between 8 and 20 characters
-        const isValidLength = password.length >= 8 && password.length <= 20;
+//         // Check if the password length is between 8 and 20 characters
+//         const isValidLength = password.length >= 8 && password.length <= 20;
       
-        // Return true if all conditions are met
-        return hasUppercase && hasLowercase && hasNumber && isValidLength;
-    }
-    const warning_message = document.querySelector(".warning-change-password")
-    function give_warning(warning_text){
-        warning_message.textContent = warning_text
-        warning_message.classList.remove('hidden')
-        warning_message.classList.add('shake-text')
-        setTimeout(() => {
-            warning_message.classList.remove('shake-text')
-        }, 2000);
-    }
+//         // Return true if all conditions are met
+//         return hasUppercase && hasLowercase && hasNumber && isValidLength;
+//     }
+//     const warning_message = document.querySelector(".warning-change-password")
+//     function give_warning(warning_text){
+//         warning_message.textContent = warning_text
+//         warning_message.classList.remove('hidden')
+//         warning_message.classList.add('shake-text')
+//         setTimeout(() => {
+//             warning_message.classList.remove('shake-text')
+//         }, 2000);
+//     }
 
-    const current_password = document.getElementById('current-password')
+//     const current_password = document.getElementById('current-password')
 
-    const password = document.getElementById('password')
+//     const password = document.getElementById('password')
 
-    const confirm_password = document.getElementById('confirm-password')
+//     const confirm_password = document.getElementById('confirm-password')
     
 
-    if(current_password.value==="" || password.value==="" || confirm_password.value ===""){
-        return
-    }
-    const current_password_value = current_password.value
-    const password_value = password.value
-    const confirm_password_value = confirm_password.value
-    const validate_password = validatePassword(password_value)
+//     if(current_password.value==="" || password.value==="" || confirm_password.value ===""){
+//         return
+//     }
+//     const current_password_value = current_password.value
+//     const password_value = password.value
+//     const confirm_password_value = confirm_password.value
+//     const validate_password = validatePassword(password_value)
     
-    if(validate_password===false){
-        const warning_text = "Please submit a valid password. Require at least 1 uppercase,1 lowercase & 1 number (8-20 charecters long)."
-        give_warning(warning_text)
-        return;
-    }else if(password_value !== confirm_password_value){
-        const warning_text = "Password and confirm password doesn't match"
-        give_warning(warning_text)
-        return;
-    }
-    add_loading()
-    const data = {
-        "current_password" : current_password_value,
-        "new_password" : password_value
-    }
-    const restet_url = api_url+`auth/users/set_password/`
+//     if(validate_password===false){
+//         const warning_text = "Please submit a valid password. Require at least 1 uppercase,1 lowercase & 1 number (8-20 charecters long)."
+//         give_warning(warning_text)
+//         return;
+//     }else if(password_value !== confirm_password_value){
+//         const warning_text = "Password and confirm password doesn't match"
+//         give_warning(warning_text)
+//         return;
+//     }
+//     add_loading()
+//     const data = {
+//         "current_password" : current_password_value,
+//         "new_password" : password_value
+//     }
+//     const restet_url = api_url+`auth/users/set_password/`
 
-    const update_password = postDataJWT(restet_url,data,jwtToken)
+//     const update_password = postDataJWT(restet_url,data,jwtToken)
 
-    update_password.then(data=>{
-        if(data.success){
-            remove_loading_timeout()
-            const success = document.querySelector('.success-password-change')
-            success.classList.remove('hidden')
-            setTimeout(() => {
-                window.location.reload()
-            }, 4000);
-        }else if(data.detail){
-            remove_loading_timeout()
-            const warning_text = data.detail
-            give_warning(warning_text)
-        }else if(data.current_password){
-            remove_loading()
-            const warning_text = data.current_password
-            give_warning(warning_text)
-        }else{
-            remove_loading_timeout()
-            const warning_text = "unexpected error"
-            give_warning(warning_text)
-        }
-    })
+//     update_password.then(data=>{
+//         if(data.success){
+//             remove_loading_timeout()
+//             const success = document.querySelector('.success-password-change')
+//             success.classList.remove('hidden')
+//             setTimeout(() => {
+//                 window.location.reload()
+//             }, 4000);
+//         }else if(data.detail){
+//             remove_loading_timeout()
+//             const warning_text = data.detail
+//             give_warning(warning_text)
+//         }else if(data.current_password){
+//             remove_loading()
+//             const warning_text = data.current_password
+//             give_warning(warning_text)
+//         }else{
+//             remove_loading_timeout()
+//             const warning_text = "unexpected error"
+//             give_warning(warning_text)
+//         }
+//     })
 
-})
-// Edit profile area
-
-
-// Profile Features Area
-
-// Deposit Balance
-const deposit_page_btn = document.querySelector('.btn-deposit-feild')
+// })
+// // Edit profile area
 
 
+// // Profile Features Area
 
-const close_deposit_page_btn = document.querySelector('.remove-deposit-page')
-const deposit_confirm_btn = document.querySelector('.deposit-confirm-btn')
-
-const deposit_page = document.querySelector('.deposit-section')
-
-const deposit_created = document.querySelector('.deposit-created')
-const deposit_form_area = document.querySelector('.deposit')
+// // Deposit Balance
+// const deposit_page_btn = document.querySelector('.btn-deposit-feild')
 
 
-deposit_page_btn.addEventListener('click',event=>{
-    deposit_page.classList.toggle('hidden')
-})
-close_deposit_page_btn.addEventListener('click',event=>{
-    deposit_page.classList.toggle('hidden')
-    deposit_created.classList.add('hidden')
-    deposit_form_area.classList.remove('hidden')
-})
 
-deposit_confirm_btn.addEventListener('click',event=>{
-    event.preventDefault()
+// const close_deposit_page_btn = document.querySelector('.remove-deposit-page')
+// const deposit_confirm_btn = document.querySelector('.deposit-confirm-btn')
+
+// const deposit_page = document.querySelector('.deposit-section')
+
+// const deposit_created = document.querySelector('.deposit-created')
+// const deposit_form_area = document.querySelector('.deposit')
+
+
+// deposit_page_btn.addEventListener('click',event=>{
+//     deposit_page.classList.toggle('hidden')
+// })
+// close_deposit_page_btn.addEventListener('click',event=>{
+//     deposit_page.classList.toggle('hidden')
+//     deposit_created.classList.add('hidden')
+//     deposit_form_area.classList.remove('hidden')
+// })
+
+// deposit_confirm_btn.addEventListener('click',event=>{
+//     event.preventDefault()
     
-    const deposit_input = document.querySelector('.deposit-amount')
+//     const deposit_input = document.querySelector('.deposit-amount')
 
-    const value = deposit_input.value
-    deposit_input.value = ""
-
-    if(value=="" || parseInt(value)==0 || parseInt(value)<0){
-        return;
-    }
-    add_loading()
-    const data = {
-        "amount":value
-    }
-    const deposit_url = api_url+`api/deposit/`
+//     const value = deposit_input.value
+//     deposit_input.value = ""
+//     add_loading()
+//     if(value=="" || parseInt(value)==0 || parseInt(value)<0){
+//         return;
+//     }
+//     add_loading()
+//     const data = {
+//         "amount":value
+//     }
+//     const deposit_url = api_url+`api/deposit/`
     
-    const post_data = postDataJWT(deposit_url,data,jwtToken)
+//     const post_data = postDataJWT(deposit_url,data,jwtToken)
 
-    post_data.then(data=>{
-        if(data.id){
-            remove_loading_timeout()
-            const pay_now = document.getElementById('pay-now-deposit')
-            pay_now.href = data.payment_url
-            deposit_form_area.classList.add('hidden')
-            deposit_created.classList.remove('hidden')
-            function updateCountdown() {
-                const counterElement = document.querySelector('.redirect-counter');
-                let currentCount = parseInt(counterElement.textContent);
+//     post_data.then(data=>{
+//         if(data.id){
+//             remove_loading_timeout()
+//             const pay_now = document.getElementById('pay-now-deposit')
+//             pay_now.href = data.payment_url
+//             deposit_form_area.classList.add('hidden')
+//             deposit_created.classList.remove('hidden')
+//             function updateCountdown() {
+//                 const counterElement = document.querySelector('.redirect-counter');
+//                 let currentCount = parseInt(counterElement.textContent);
 
-                if (currentCount === 1) {
-                    window.location.reload()
-                    clearInterval(countdownInterval);
-                }
+//                 if (currentCount === 1) {
+//                     window.location.reload()
+//                     clearInterval(countdownInterval);
+//                 }
     
-                currentCount--;
+//                 currentCount--;
 
-                counterElement.innerHTML = currentCount;
-            }
+//                 counterElement.innerHTML = currentCount;
+//             }
     
-            // Set the interval to execute the updateCountdown function every 1 second (1000 milliseconds)
-            setInterval(() => {
-                updateCountdown();
-            }, 1000);
-        }else if(data.error){
-            remove_loading()
-            const deposit_warning = document.querySelector('.deposit-warning')
-            deposit_warning.textContent = data.error
-            deposit_warning.classList.remove('hidden')
-        }else{
-            remove_loading()
-            const deposit_warning = document.querySelector('.deposit-warning')
-            deposit_warning.textContent = data.amount
-            deposit_warning.classList.remove('hidden')
-        }
+//             // Set the interval to execute the updateCountdown function every 1 second (1000 milliseconds)
+//             setInterval(() => {
+//                 updateCountdown();
+//             }, 1000);
+//         }else if(data.error){
+//             remove_loading()
+//             const deposit_warning = document.querySelector('.deposit-warning')
+//             deposit_warning.textContent = data.error
+//             deposit_warning.classList.remove('hidden')
+//         }else{
+//             remove_loading()
+//             const deposit_warning = document.querySelector('.deposit-warning')
+//             deposit_warning.textContent = data.amount
+//             deposit_warning.classList.remove('hidden')
+//         }
         
-    })
-})
+//     })
+// })
 // deposit 
 
 // Withdraw BTN
-const withdraw_section = document.querySelector('.withdraw-section')
-const remove_withdraw_btn = document.querySelector('.remove-withdraw-page')
-remove_withdraw_btn.addEventListener('click',event=>{
-    withdraw_section.classList.toggle('hidden')
-})
+// const withdraw_section = document.querySelector('.withdraw-section')
+// const remove_withdraw_btn = document.querySelector('.remove-withdraw-page')
+// remove_withdraw_btn.addEventListener('click',event=>{
+//     withdraw_section.classList.toggle('hidden')
+// })
 
-const withdraw_section_btn = document.querySelector('.btn-withdraw-feild')
+// const withdraw_section_btn = document.querySelector('.btn-withdraw-feild')
 
-withdraw_section_btn.addEventListener('click',event=>{
-    withdraw_section.classList.toggle('hidden')
+// withdraw_section_btn.addEventListener('click',event=>{
+//     withdraw_section.classList.toggle('hidden')
 
-})
+// })
 
-const withdraw_confrim_btn = document.querySelector('.withdraw-confirm-btn')
+// const withdraw_confrim_btn = document.querySelector('.withdraw-confirm-btn')
 
-withdraw_confrim_btn.addEventListener('click',event=>{
-    event.preventDefault()
-    const current_balance =  withdraw_section_btn.getAttribute('balance')
-    add_loading()
-    const crypto = document.querySelector('.select-crypto').value
-    const amount = document.querySelector('.withdraw-amount').value
-    const address = document.querySelector('.withdraw-address').value
-    const warning = document.querySelector('.withdraw-warning')
-    if(amount==""){
-        warning.textContent = "Amount Empty"
-        warning.classList.remove('hidden')
-        remove_loading()
-        return
-    }else if(parseInt(amount)>parseInt(current_balance) || parseInt(amount)==0){
-        warning.textContent = "Not Enough Balance"
-        warning.classList.remove('hidden')
-        remove_loading()
-        return;
-    }else if(address==""){
-        warning.textContent = "Address Empty"
-        warning.classList.remove('hidden')
-        remove_loading()
-        return
-    }
+// withdraw_confrim_btn.addEventListener('click',event=>{
+//     event.preventDefault()
+//     const current_balance =  withdraw_section_btn.getAttribute('balance')
+//     add_loading()
+//     const crypto = document.querySelector('.select-crypto').value
+//     const amount = document.querySelector('.withdraw-amount').value
+//     const address = document.querySelector('.withdraw-address').value
+//     const warning = document.querySelector('.withdraw-warning')
+//     if(amount==""){
+//         warning.textContent = "Amount Empty"
+//         warning.classList.remove('hidden')
+//         remove_loading()
+//         return
+//     }else if(parseInt(amount)>parseInt(current_balance) || parseInt(amount)==0){
+//         warning.textContent = "Not Enough Balance"
+//         warning.classList.remove('hidden')
+//         remove_loading()
+//         return;
+//     }else if(address==""){
+//         warning.textContent = "Address Empty"
+//         warning.classList.remove('hidden')
+//         remove_loading()
+//         return
+//     }
 
-    const withdraw_url = api_url+`api/withdraw/`
-    const post_data = {
-        "amount":amount,
-        "crypto":crypto,
-        "cryptoaddress":address
-    }
+//     const withdraw_url = api_url+`api/withdraw/`
+//     const post_data = {
+//         "amount":amount,
+//         "crypto":crypto,
+//         "cryptoaddress":address
+//     }
 
-    const post_withdraw = postDataJWT(withdraw_url,post_data,jwtToken)
+//     const post_withdraw = postDataJWT(withdraw_url,post_data,jwtToken)
 
-    post_withdraw.then(data=>{
-        if(data.id){
-            const withdraw = document.querySelector('.withdraw')
-            const withdraw_created = document.querySelector('.withdraw-created')
-            remove_loading_timeout()
+//     post_withdraw.then(data=>{
+//         if(data.id){
+//             const withdraw = document.querySelector('.withdraw')
+//             const withdraw_created = document.querySelector('.withdraw-created')
+//             remove_loading_timeout()
             
-            withdraw.classList.add('hidden')
-            withdraw_created.classList.remove('hidden')
+//             withdraw.classList.add('hidden')
+//             withdraw_created.classList.remove('hidden')
 
-            function updateCountdown() {
-                const counterElement = document.querySelector('.redirect-counter-withdraw');
-                let currentCount = parseInt(counterElement.textContent);
+//             function updateCountdown() {
+//                 const counterElement = document.querySelector('.redirect-counter-withdraw');
+//                 let currentCount = parseInt(counterElement.textContent);
 
-                if (currentCount === 1) {
-                    window.location.reload()
-                    clearInterval(countdownInterval);
-                }
+//                 if (currentCount === 1) {
+//                     window.location.reload()
+//                     clearInterval(countdownInterval);
+//                 }
     
-                currentCount--;
+//                 currentCount--;
 
-                counterElement.innerHTML = currentCount;
-            }
+//                 counterElement.innerHTML = currentCount;
+//             }
     
-            // Set the interval to execute the updateCountdown function every 1 second (1000 milliseconds)
-            setInterval(() => {
-                updateCountdown();
-            }, 1000);
-        }else{
-            warning.textContent = "Error"
-            warning.classList.remove('hidden')
-            remove_loading_timeout_custom(2000)
-        }
-    })
-})
+//             // Set the interval to execute the updateCountdown function every 1 second (1000 milliseconds)
+//             setInterval(() => {
+//                 updateCountdown();
+//             }, 1000);
+//         }else{
+//             warning.textContent = "Error"
+//             warning.classList.remove('hidden')
+//             remove_loading_timeout_custom(2000)
+//         }
+//     })
+// })
 
 
 
-// Withdraw BTN
+// // Withdraw BTN
 
 // TRANSACTIONS
 
 
-const transaction_lists = document.querySelector('.transactions-list')
-const transactions_url = api_url+`api/transactions/`
+// const transaction_lists = document.querySelector('.transactions-list')
+// const transactions_url = api_url+`api/transactions/`
 
 
-function transactions(transactions_url){
-    const transactions_prev = document.querySelector('.transactions-prev')
-    const transactions_next = document.querySelector('.transactions-next')
+// function transactions(transactions_url){
+//     const transactions_prev = document.querySelector('.transactions-prev')
+//     const transactions_next = document.querySelector('.transactions-next')
 
-    const transactions_data = getDataJWT(transactions_url,jwtToken)
-    transactions_data.then(data=>{
-        transactions_prev.setAttribute('data-prev-url',data.previous)
-        transactions_next.setAttribute('data-next-url',data.next)
-        data = data.results
-        data.forEach(t=>{
-            const id = t.id
-            const amount = t.amount
-            const status = t.status
-            const payment_url = t.payment_url 
-            const transaction_direction = t.transaction_direction
+//     const transactions_data = getDataJWT(transactions_url,jwtToken)
+//     transactions_data.then(data=>{
+//         transactions_prev.setAttribute('data-prev-url',data.previous)
+//         transactions_next.setAttribute('data-next-url',data.next)
+//         data = data.results
+//         data.forEach(t=>{
+//             const id = t.id
+//             const amount = t.amount
+//             const status = t.status
+//             const payment_url = t.payment_url 
+//             const transaction_direction = t.transaction_direction
             
-            let date = new Date(t.created_at)
-            const created_at = date.toUTCString().slice(0, 11)
+//             let date = new Date(t.created_at)
+//             const created_at = date.toUTCString().slice(0, 11)
 
-            const li = generateTransaction(id,amount,status,payment_url,transaction_direction,created_at)
-            transaction_lists.appendChild(li)
-        })
-    })
-}
-transactions(transactions_url)
-const transactions_prev = document.querySelector('.transactions-prev')
-const transactions_next = document.querySelector('.transactions-next')
+//             const li = generateTransaction(id,amount,status,payment_url,transaction_direction,created_at)
+//             transaction_lists.appendChild(li)
+//         })
+//     })
+// }
+// transactions(transactions_url)
+// const transactions_prev = document.querySelector('.transactions-prev')
+// const transactions_next = document.querySelector('.transactions-next')
 
-transactions_prev.addEventListener('click',event=>{
-    add_loading()
+// transactions_prev.addEventListener('click',event=>{
+//     add_loading()
     
-    const url = transactions_prev.getAttribute('data-prev-url')
-    if(url==="null"){
-        remove_loading()
-        return
-    }
-    let first_child = transaction_lists.firstElementChild
-    transaction_lists.innerHTML = ''
-    transaction_lists.appendChild(first_child)
-    transactions(url)
-    remove_loading_timeout()
-})
+//     const url = transactions_prev.getAttribute('data-prev-url')
+//     if(url==="null"){
+//         remove_loading()
+//         return
+//     }
+//     let first_child = transaction_lists.firstElementChild
+//     transaction_lists.innerHTML = ''
+//     transaction_lists.appendChild(first_child)
+//     transactions(url)
+//     remove_loading_timeout()
+// })
 
-transactions_next.addEventListener('click',event=>{
-    add_loading()
-    const url = transactions_next.getAttribute('data-next-url')
+// transactions_next.addEventListener('click',event=>{
+//     add_loading()
+//     const url = transactions_next.getAttribute('data-next-url')
     
-    if(url==="null"){
-        remove_loading()
-        return
-    }
-    let first_child = transaction_lists.firstElementChild
-    transaction_lists.innerHTML = ''
-    transaction_lists.appendChild(first_child)
-    transactions(url)
-    remove_loading_timeout()
-})
+//     if(url==="null"){
+//         remove_loading()
+//         return
+//     }
+//     let first_child = transaction_lists.firstElementChild
+//     transaction_lists.innerHTML = ''
+//     transaction_lists.appendChild(first_child)
+//     transactions(url)
+//     remove_loading_timeout()
+// })
 
 
-// Balance History 
+// // Balance History 
 
-const balance_history_list = document.querySelector('.balance-histories-list')
+// const balance_history_list = document.querySelector('.balance-histories-list')
 
-const balance_history_url = api_url+`api/balancehistory/`
-
-
-
-function balancehistory(balance_history_url){
-    const balance_history_data = getDataJWT(balance_history_url,jwtToken)
-
-    const balance_history_prev = document.querySelector('.balance-histories-prev')
-    const balance_history_next = document.querySelector('.balance-histories-next')
-
-    balance_history_data.then(data=>{
-        balance_history_prev.setAttribute('data-prev-url',data.previous)
-        balance_history_next.setAttribute('data-next-url',data.next)
-        data = data.results
-
-        data.forEach(t=>{
-            console.log(t);
-            const amount = t.amount
-            const direction = t.transaction_direction
-            const order_id = t.order
-            const last_balance = t.last_balance
-            console.log(direction);
-            const li = generate_balance_history(amount,order_id,direction,last_balance)
-            balance_history_list.appendChild(li)
-        })
-    })
-}
-
-balancehistory(balance_history_url)
-const balance_history_prev = document.querySelector('.balance-histories-prev')
-const balance_history_next = document.querySelector('.balance-histories-next')
+// const balance_history_url = api_url+`api/balancehistory/`
 
 
-balance_history_prev.addEventListener('click',event=>{
-    add_loading()
-    const url = balance_history_prev.getAttribute('data-prev-url')
-    if(url==="null"){
-        remove_loading()
-        return
-    }
-    let first_child = balance_history_list.firstElementChild
-    balance_history_list.innerHTML = ''
-    balance_history_list.appendChild(first_child)
-    balancehistory(url)
-    remove_loading_timeout()
-})
 
-balance_history_next.addEventListener('click',event=>{
-    add_loading()
+// function balancehistory(balance_history_url){
+//     const balance_history_data = getDataJWT(balance_history_url,jwtToken)
+
+//     const balance_history_prev = document.querySelector('.balance-histories-prev')
+//     const balance_history_next = document.querySelector('.balance-histories-next')
+
+//     balance_history_data.then(data=>{
+//         balance_history_prev.setAttribute('data-prev-url',data.previous)
+//         balance_history_next.setAttribute('data-next-url',data.next)
+//         data = data.results
+
+//         data.forEach(t=>{
+//             console.log(t);
+//             const amount = t.amount
+//             const direction = t.transaction_direction
+//             const order_id = t.order
+//             const last_balance = t.last_balance
+//             console.log(direction);
+//             const li = generate_balance_history(amount,order_id,direction,last_balance)
+//             balance_history_list.appendChild(li)
+//         })
+//     })
+// }
+
+// balancehistory(balance_history_url)
+// const balance_history_prev = document.querySelector('.balance-histories-prev')
+// const balance_history_next = document.querySelector('.balance-histories-next')
+
+
+// balance_history_prev.addEventListener('click',event=>{
+//     add_loading()
+//     const url = balance_history_prev.getAttribute('data-prev-url')
+//     if(url==="null"){
+//         remove_loading()
+//         return
+//     }
+//     let first_child = balance_history_list.firstElementChild
+//     balance_history_list.innerHTML = ''
+//     balance_history_list.appendChild(first_child)
+//     balancehistory(url)
+//     remove_loading_timeout()
+// })
+
+// balance_history_next.addEventListener('click',event=>{
+//     add_loading()
     
-    const url = balance_history_next.getAttribute('data-next-url')
-    if(url==="null"){
-        remove_loading()
-        return
-    }
-    let first_child = balance_history_list.firstElementChild
-    balance_history_list.innerHTML = ''
-    balance_history_list.appendChild(first_child)
-    balancehistory(url)
-    remove_loading_timeout()
-})
+//     const url = balance_history_next.getAttribute('data-next-url')
+//     if(url==="null"){
+//         remove_loading()
+//         return
+//     }
+//     let first_child = balance_history_list.firstElementChild
+//     balance_history_list.innerHTML = ''
+//     balance_history_list.appendChild(first_child)
+//     balancehistory(url)
+//     remove_loading_timeout()
+// })
 
 // Order Section
 
