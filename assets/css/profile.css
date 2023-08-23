@@ -345,13 +345,13 @@
     width: 100%;
 }
 .transaction p{
-    border: 1px solid white;
+    border: 1px solid black;
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
     width: 100%;
-    color: white;
-    background: #1D1678;
+    color: black;
+    background: white;
     font-size: 15px;
 }
 
@@ -918,6 +918,13 @@ a.pay-url{
 /* Feedback  */
 
 
+@media screen and (max-width: 500px){
+    .balance-title{
+        position: relative;
+        top: 30px;
+        margin-bottom: 20px;
+    }
+}
 /* Responsive */
 @media screen and (max-width: 1020px){
     .transactions-area {
@@ -959,14 +966,19 @@ a.pay-url{
     .balance-history{
         width: 950px;
     }
-
+    html {
+        --scrollbarBG: #CFD8DC;
+        --thumbBG: #90A4AE;
+      }
     .orders-list{
         display: flex;
-        overflow-x: auto; /* Enable horizontal scrolling */
+        overflow-x:auto; /* Enable horizontal scrolling */
         white-space: nowrap; /* Prevent items from wrapping */
         padding: 0;
         list-style: none;
         flex-direction: column;
+        overflow-y: auto;
+        scrollbar-color: red yellow;
     }
     .order-details{
         width: 950px;
@@ -975,3 +987,4 @@ a.pay-url{
         width: 950px;
     }
 }
+

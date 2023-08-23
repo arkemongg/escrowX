@@ -119,17 +119,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const update_customer= document.querySelector('.update-customer-btn')
 update_customer.addEventListener('click',event=>{
-
+    
     const customer_id = edit_profile_btn.getAttribute('data-customer')
     const avatar_id = edit_profile_btn.getAttribute('data-avatar')
     
     const avatar_url = `${apiUrl}/api/customer/${customer_id}/avatar/${avatar_id}/`
     const src = input_img.files[0]
-    
+    if (src) {
+        const fileSizeInMB = src.size / (1024 * 1024); // Convert bytes to megabytes
+      
+        if (fileSizeInMB > 2) {
+          alert("Selected image is larger than 2MB");
+          return;
+        }
+    }
+    add_loading()
     if(src!==undefined){
         const data = patchDataWithImageJWT(avatar_url,src,jwtToken)
         data.then(data=>{
-            alert(data.profile)
+            // alert(data.profile)
         })
     }
 
@@ -148,12 +156,14 @@ update_customer.addEventListener('click',event=>{
             // remove_loading_timeout_reload()
             sync()
         }else{
+            remove_loading_timeout()
             const warning = document.querySelector('.edit-profile-warning')
             warning.textContent = 'ERROR'
             warning.classList.remove('hidden')
         }
         
     })
+    remove_loading_timeout_custom(4000)
 
 })
 
@@ -215,7 +225,7 @@ change_password_btn.addEventListener('click',event=>{
         give_warning(warning_text)
         return;
     }
-
+    add_loading()
     const data = {
         "current_password" : current_password_value,
         "new_password" : password_value
@@ -232,13 +242,16 @@ change_password_btn.addEventListener('click',event=>{
                 window.location.reload()
             }, 4000);
         }else if(data.detail){
+            remove_loading_timeout()
             const warning_text = data.detail
             give_warning(warning_text)
         }else if(data.current_password){
+            remove_loading_timeout()
             
             const warning_text = data.current_password
             give_warning(warning_text)
         }else{
+            remove_loading_timeout()
             
             const warning_text = "unexpected error"
             give_warning(warning_text)
@@ -281,7 +294,7 @@ upload_verify_files_btn.addEventListener('click',event=>{
         alert("File size exceeds 2MB limit.");
         return;
     }
-    
+    add_loading()
     const data = {
         "nid_verify_front":front_data,
         "nid_verify_back":back_data,
@@ -297,11 +310,13 @@ upload_verify_files_btn.addEventListener('click',event=>{
             upload_verify_files_btn.disabled = true;
             const verify_success = document.querySelector('.verify-profile-success')
             verify_success.classList.remove('hidden')
+            remove_loading_timeout_custom(5000)
 
             setTimeout(() => {
                 window.location = domainUrl
             }, 5000);
         }else if(data.error){
+            remove_loading_timeout()
             
             const warning = document.querySelector(".verify-profile-warning")
             warning.textContent = data.error
@@ -311,6 +326,8 @@ upload_verify_files_btn.addEventListener('click',event=>{
                 window.location = domainUrl
             }, 5000);
         }else{
+            remove_loading_timeout()
+
             const warning = document.querySelector(".verify-profile-warning")
             warning.textContent = "Error"
             warning.classList.remove("hidden")

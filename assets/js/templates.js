@@ -1,8 +1,8 @@
 export function createProductTemplate(data) {
     const vs = data.verifiedSeller?`<li class="vs">Verified Seller</li>`: `<div style="height:27px"></div>`
-    const ss = data.verifiedSeller?`<li class="ss">Super Seller</li>`: `<div style="height:27px"></div>`
+    const ss = data.superSeller?`<li class="ss">Super Seller</li>`: `<div style="height:27px"></div>`
     const div = document.createElement('div');
-    div.classList.add('col-xl-4', 'col-lg-4', 'col-md-4', 'col-sm-6', 'col-12');
+    div.classList.add('col-xl-4','product-card', 'col-lg-4', 'col-md-4', 'col-sm-6', 'col-12');
     
     const hasSuperSeller = data.superSeller;
   

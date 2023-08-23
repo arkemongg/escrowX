@@ -10001,10 +10001,18 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 /*# sourceMappingURL=style.css.map */
 
 /* New changes */
-
+.btc-price,.ltc-price{
+  position: relative;
+  top: 3px;
+}
 /* Product Card Img */
+.product-card{
+  min-width: 350px;
+  max-width: 350px;
+  height: 550px;
+}
 .tranding-pro-img{
-  height: 300px;
+  height: 350px;
   overflow: hidden;
 }
 .prod-img{

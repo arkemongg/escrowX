@@ -109,7 +109,7 @@ function socket_connect(ws_url,id,me,seller){
         }
     }
     ws.onerror = (event)=>{
-      console.log(event);
+      alert("Error : "+event.data)
     }
 
 }
