@@ -2,12 +2,13 @@ import { userAndToken } from './cookies.js';
 import { fetchDataWithJwt } from './fetch.js';
 import { add_loading, remove_loading_timeout, remove_loading_timeout_custom } from './loading.js';
 import { nav } from './nav.js';
-import { apiUrl } from './urls.js';
-add_loading()
-window.onload = () => {
-  remove_loading_timeout_custom(4000)
-};
-
+import { createConversationElement, createMyMessageLi, createOtherMessageLi } from './templates.js';
+import { apiUrl, websocket_url } from './urls.js';
+// add_loading()
+// window.onload = () => {
+//   remove_loading_timeout_custom(4000)
+// };
+const jwtToken = userAndToken.token
 
 const conversations = document.querySelector('.conversations')
 
@@ -33,7 +34,10 @@ function conversation_loader(conversations_url){
       
       data.forEach(conversation=>{
         console.log(conversation);
-          const seller = getSellerSubstring(conversation.seller.toString());
+          let seller = getSellerSubstring(conversation.seller.toString());
+          if(typeof(conversation.seller)==="number"){
+            seller = "seller"+conversation.seller
+          }
           let li = ""
           if(conversation.last_message === null){
               li = createConversationElement(seller,"No Message","","")
@@ -49,16 +53,17 @@ function conversation_loader(conversations_url){
           conversations.appendChild(li)
           li.addEventListener('click',event=>{
               add_loading()
+              let seller_name_btn = document.querySelector('.seller-conversation-name')
+              seller_name_btn.textContent = conversation.seller
+              if(typeof(conversation.seller)==="number"){
+                seller_name_btn.textContent = "seller"+conversation.seller
+              }
+             
+              
               const id = li.getAttribute("data-id")
               const me = li.getAttribute("data-me")
               const seller = li.getAttribute("data-seller")
-              let ws_url = ""
-              if(jwtToken==undefined){
-                const jwtToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjkxNTAzMTY2LCJpYXQiOjE2OTE0MTY3NjYsImp0aSI6IjNhZjQ5YmQyNDYzNjRiNmQ4ODUzYWViZGU0NTk5MDNlIiwidXNlcl9pZCI6MjN9.WMwkIY0TRwhgNm3lz2p9Zu3_rmcDJ7JBLbLf5UbpVoE'
-                 ws_url = `${websocket_url}conversations/${id}/${jwtToken}/`
-              }else{
-                ws_url = `${websocket_url}conversations/${id}/${jwtToken}/`
-              }
+              let ws_url = `${websocket_url}/conversations/${id}/${jwtToken}/`
               
               if(list.length===0){
                 
@@ -83,8 +88,9 @@ conversation_loader(conversations_url)
 
 
 function socket_connect(ws_url,id,me,seller){
-  
-  const ws = new WebSocket(ws_url)
+  console.log(ws_url);
+  const ws = new WebSocket(ws_url+'')
+  console.log(ws_url);
     if(list.length===0){
       list.push(ws)
     }else{
@@ -116,13 +122,13 @@ function scrollToBottom(element) {
 const url = new URL(window.location)
 const id = url.searchParams.get("id")
 if(id!==null){
-  const preload_url = api_url+`api/conversations/${id}/`
-  const get_preload_data = getDataJWT(preload_url,jwtToken)
+  const preload_url = apiUrl+`/api/conversations/${id}/`
+  const get_preload_data = fetchDataWithJwt(preload_url,jwtToken)
 
   get_preload_data.then(data=>{
     let ws_url = ""
 
-    ws_url = `${websocket_url}conversations/${id}/${jwtToken}/`
+    ws_url = `${websocket_url}/conversations/${id}/${jwtToken}/`
     
     socket_connect(ws_url,id,data.me,data.seller)
     setTimeout(() => {
@@ -142,11 +148,12 @@ const messageLoader = document.querySelector('.message-loader');
 const message_list = document.querySelector('.messages')
 function get_message(id,me,seller){
   message_list.innerHTML = ``
-  const message_api = api_url+`api/conversations/${id}/message/`
-  const get_message = getDataJWT(message_api,jwtToken)
+  const message_api = apiUrl+`/api/conversations/${id}/message/`
+  const get_message = fetchDataWithJwt(message_api,jwtToken)
   get_message.then(data=>{
     const load_more = document.querySelector('.load-more')
     load_more.setAttribute('data-more',data.next)
+    load_more.disabled = false
     data = data.results
     message_list.setAttribute('data-seller',seller)
     message_list.setAttribute('data-me',me)
@@ -159,7 +166,7 @@ function get_message(id,me,seller){
         li = createMyMessageLi(created_at,message.message,'me')
       }else{
         
-        li = createOtherMessageLi(created_at,message.message,seller[0])
+        li = createOtherMessageLi(created_at,message.message,"seller")
       }
       message_list.prepend(li)
     })
@@ -176,7 +183,7 @@ load_more_btn.addEventListener('click',event=>{
     return;
   }
   add_loading()
-  const data_get = getDataJWT(more_url,jwtToken)
+  const data_get = fetchDataWithJwt(more_url,jwtToken)
   const seller = message_list.getAttribute('data-seller')
   const me = message_list.getAttribute('data-me')
 
@@ -188,11 +195,9 @@ load_more_btn.addEventListener('click',event=>{
       
       const created_at = new Date(message.created_at).toLocaleString()
       if(message.sender==me){
-        
         li = createMyMessageLi(created_at,message.message,'me')
       }else{
-        
-        li = createOtherMessageLi(created_at,message.message,seller[0])
+        li = createOtherMessageLi(created_at,message.message,"seller")
       }
       message_list.prepend(li)
     })
@@ -213,7 +218,7 @@ function createNewMessage(data){
   }else{
     const beepSound = new Audio('/assets/beep.mp3');
     beepSound.play();
-    li = createOtherMessageLi(created_at,message.message,seller[0])
+    li = createOtherMessageLi(created_at,message.message,"seller")
   }
   message_list.appendChild(li)
   scrollToBottom(messageLoader)

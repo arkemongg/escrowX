@@ -30,16 +30,7 @@ export async function postData(url, bodyData) {
     });
 
     if (!response.ok) {
-      if (response.status === 401) {
-        // Unauthorized: Token is invalid or expired
-        removeCookie("user");
-        // Display an alert to the user
-        showAlert("Your session has expired. Please log in again.");
-        // Redirect to the login page after 3 seconds
-        setTimeout(() => {
-          window.location = domainUrl + "/login.html";
-        }, 2000);
-      } else if (response.status === 429) {
+      if (response.status === 429) {
         showAlert("Too many requests. Please try again later.");
       } else {
         return response.json()

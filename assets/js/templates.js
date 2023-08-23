@@ -296,3 +296,124 @@ export function generateMyProductItem(title, imageSrc, price) {
 
   return liElement;
 }
+
+// Conversations
+export function createConversationElement(name, sender, message, created_at) {
+  const liElement = document.createElement("li");
+  liElement.className = "conversation";
+
+  const thumbnailNameArea = document.createElement("div");
+  thumbnailNameArea.className = "thumbnail-name-area";
+
+  const thumbnailName = document.createElement("div");
+  thumbnailName.className = "thumbnail-name";
+  thumbnailName.textContent = name;
+
+  thumbnailNameArea.appendChild(thumbnailName);
+
+  const thumbnailMessageArea = document.createElement("div");
+  thumbnailMessageArea.className = "thumbnail-message-area";
+
+  const thumbnailSender = document.createElement("span");
+  thumbnailSender.className = "thumbnail-sender";
+  thumbnailSender.textContent = sender ;
+
+  const thumbnailMessage = document.createElement("span");
+  thumbnailMessage.className = "thumbnail-message";
+  thumbnailMessage.textContent = message;
+
+  thumbnailMessageArea.appendChild(thumbnailSender);
+  thumbnailMessageArea.appendChild(thumbnailMessage);
+
+  const thumbnailCreatedAtArea = document.createElement("div");
+  thumbnailCreatedAtArea.className = "thumbnail-created-at-area";
+
+  const thumbnailCreatedAt = document.createElement("span");
+  thumbnailCreatedAt.className = "thumbnail-created-at";
+  thumbnailCreatedAt.textContent = created_at;
+
+  thumbnailCreatedAtArea.appendChild(thumbnailCreatedAt);
+
+  liElement.appendChild(thumbnailNameArea);
+  liElement.appendChild(thumbnailMessageArea);
+  liElement.appendChild(thumbnailCreatedAtArea);
+
+  return liElement;
+}
+
+// Create Message
+export function createOtherMessageLi(createdDate, messageText, senderName) {
+  // Create the li element
+  const liElement = document.createElement('li');
+  liElement.className = 'other-message';
+
+  // Create the span for created_at
+  const createdAtSpan = document.createElement('span');
+  createdAtSpan.className = 'created_at';
+  createdAtSpan.textContent = createdDate;
+
+  // Create the div for message-area
+  const messageAreaDiv = document.createElement('div');
+  messageAreaDiv.className = 'message-area';
+
+  // Create the div for sender-area
+  const senderAreaDiv = document.createElement('div');
+  senderAreaDiv.className = 'sender-area';
+
+  // Create the p element for sender name
+  const senderParagraph = document.createElement('p');
+  senderParagraph.className = 'sender';
+  senderParagraph.textContent = senderName;
+
+  // Create the p element for the message text
+  const messageParagraph = document.createElement('p');
+  messageParagraph.className = 'message bg-success';
+  messageParagraph.textContent = messageText;
+
+  // Append the elements to their respective parents
+  senderAreaDiv.appendChild(senderParagraph);
+  messageAreaDiv.appendChild(senderAreaDiv);
+  messageAreaDiv.appendChild(messageParagraph);
+  liElement.appendChild(createdAtSpan);
+  liElement.appendChild(messageAreaDiv);
+
+  return liElement;
+}
+
+export function createMyMessageLi(createdDate, messageText, senderName) {
+  // Create the li element
+  const liElement = document.createElement('li');
+  liElement.className = 'my-message';
+
+  // Create the span for created_at
+  const createdAtSpan = document.createElement('span');
+  createdAtSpan.className = 'created_at';
+  createdAtSpan.textContent = createdDate;
+
+  // Create the div for message-area
+  const messageAreaDiv = document.createElement('div');
+  messageAreaDiv.className = 'message-area';
+
+  // Create the p element for the message text
+  const messageParagraph = document.createElement('p');
+  messageParagraph.className = 'message bg-primary';
+  messageParagraph.textContent = messageText;
+
+  // Create the div for receiver-area
+  const receiverAreaDiv = document.createElement('div');
+  receiverAreaDiv.className = 'receiver-area';
+
+  // Create the p element for sender name
+  const senderParagraph = document.createElement('p');
+  senderParagraph.className = 'sender';
+  senderParagraph.textContent = senderName;
+
+  // Append the elements to their respective parents
+  receiverAreaDiv.appendChild(senderParagraph);
+  messageAreaDiv.appendChild(messageParagraph);
+  messageAreaDiv.appendChild(receiverAreaDiv);
+  liElement.appendChild(createdAtSpan);
+  liElement.appendChild(messageAreaDiv);
+
+  return liElement;
+}

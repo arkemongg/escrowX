@@ -732,6 +732,8 @@ async function orders(order_url){
                 };
             
                 li = generateCompleteOrder(completeOrderData)
+                
+                
                 complete_orders_list.appendChild(li)
                 if(order.feedback !==null){
                     const feedback = li.querySelector('#order-feedback')
@@ -755,7 +757,7 @@ async function orders(order_url){
                     }
                 }
             }
-         
+            li.querySelector('#order-id').setAttribute("data-order-id",order.id)
             setOrderItems(order.id, order.orderitems);
             
             //orderitems view 
@@ -766,8 +768,10 @@ async function orders(order_url){
             orderitems_btn.addEventListener('click',event=>{
                 const order_items_section = document.querySelector('.orderitems-section')
                 order_items_section.classList.toggle('hidden')
-                let order_id = event.target.textContent
-                order_id = order_id.match(/\d+/)[0];
+                let order = event.target.closest('p')
+                
+                const order_id = order.getAttribute('data-order-id');
+                
                 const items = getOrderItem(order_id)
                 
                 data = items[0]

@@ -146,7 +146,7 @@ async function sales(sale_url) {
                 let order = event.target.closest('p')
                 
                 const order_id = order.getAttribute('data-order-id');
-                console.log(order_id);
+                
                 const items = getOrderItem(order_id)[0]
                 sell_items_id.textContent = "#"+order_id
                 sell_items_product_id.textContent = items.product
